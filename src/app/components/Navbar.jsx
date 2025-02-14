@@ -21,7 +21,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-zinc-100 bg-violet-200">
+    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-zinc-100 bg-zinc-300">
       <div className="flex justify-between items-center">
         <section className="flex gap-2 items-center">
           {/* Menu Toggle */}
@@ -46,7 +46,7 @@ const Navbar = () => {
                       href="/"
                       className="lg:text-3xl md:text-2xl text-xl font-extrabold text-opacity-60"
                     >
-                      FluentWay
+                      Fluent<span className="text-orange-500">Way</span>
                     </Link>
                   </Button>
                 </div>
@@ -59,27 +59,27 @@ const Navbar = () => {
           </div>
 
           {/* Logo & Title */}
-          <div className="flex md:gap-1 items-center">
+          <div className="flex gap-1 items-center">
             <Image
               src="/assets/fluent-way.webp"
               alt="Logo"
               className="rounded-md"
-              width={47}
-              height={47}
+              width={44}
+              height={44}
             />
             <Button variant="ghost">
               <Link
                 href="/"
-                className="md:text-3xl text-xl font-extrabold text-opacity-60"
+                className="md:text-2xl text-xl font-extrabold text-opacity-60"
               >
-                FluentWay
+                Fluent<span className="text-orange-500">Way</span>
               </Link>
             </Button>
           </div>
         </section>
 
         {/* Desktop Navigation */}
-        <ul className="lg:flex hidden justify-center items-center gap-4 *:font-bold text-opacity-70">
+        <ul className="lg:flex hidden justify-center items-center gap-6 *:font-semibold text-opacity-70">
           {navigationMenu}
         </ul>
 
