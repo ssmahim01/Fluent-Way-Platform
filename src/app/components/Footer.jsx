@@ -1,8 +1,7 @@
-"use client";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaMessage } from "react-icons/fa6";
 import { IoMdCall } from "react-icons/io";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -105,8 +104,8 @@ const Footer = () => {
               ></input>
             </div>
 
-            <Button variant="default" className="text-base font-bold px-6">
-              Send Message
+            <Button variant="default" className="flex gap-2 items-center text-base font-bold px-6">
+              <FaMessage /> <span>Send Message</span>
             </Button>
           </form>
         </div>

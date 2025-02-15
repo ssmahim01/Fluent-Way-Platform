@@ -1,0 +1,98 @@
+[
+      {
+        "id": 1,
+        "title": "IELTS Preparation",
+        "description": "Master the IELTS exam with comprehensive lessons and practice tests. Get personalized feedback and improve your band score.",
+        "price": "$99",
+        "duration": "8 weeks",
+        "level": "Intermediate to Advanced",
+        "image": "https://i.ibb.co.com/FkHdndyz/ielts-preparation.jpg",
+        "likes": 120,
+        "rating": 4.8,
+        "reviews": 45
+      },
+      {
+        "id": 2,
+        "title": "Spoken English for Beginners",
+        "description": "Learn the basics of English conversation, pronunciation, and everyday phrases in a fun and engaging way. Perfect for beginners.",
+        "price": "$59",
+        "duration": "6 weeks",
+        "level": "Beginner",
+        "image": "https://i.ibb.co.com/Z1vMdjpq/spoken-english.jpg",
+        "likes": 180,
+        "rating": 4.7,
+        "reviews": 60
+      },
+      {
+        "id": 3,
+        "title": "Advanced English Grammar",
+        "description": "Dive deep into complex grammar topics, sentence structure, and writing skills. Improve your fluency and accuracy in written English.",
+        "price": "$79",
+        "duration": "6 weeks",
+        "level": "Advanced",
+        "image": "https://i.ibb.co.com/vxrWfbbs/english-teacher.jpg",
+        "likes": 95,
+        "rating": 4.6,
+        "reviews": 30
+      },
+      {
+        "id": 4,
+        "title": "Business English",
+        "description": "Enhance your professional communication skills with a focus on business vocabulary, presentations, meetings, and email etiquette.",
+        "price": "$89",
+        "duration": "7 weeks",
+        "level": "Intermediate",
+        "image": "https://example.com/images/business-english.jpg",
+        "likes": 200,
+        "rating": 4.9,
+        "reviews": 70
+      },
+      {
+        "id": 5,
+        "title": "English Pronunciation Mastery",
+        "description": "Perfect your English pronunciation with targeted exercises, accent reduction techniques, and tips for clearer speech.",
+        "price": "$69",
+        "duration": "5 weeks",
+        "level": "Intermediate",
+        "image": "https://example.com/images/pronunciation-mastery.jpg",
+        "likes": 150,
+        "rating": 4.7,
+        "reviews": 50
+      },
+      {
+        "id": 6,
+        "title": "English Writing Skills",
+        "description": "Improve your writing abilities by learning how to structure essays, emails, reports, and creative writing with advanced techniques.",
+        "price": "$75",
+        "duration": "6 weeks",
+        "level": "Intermediate",
+        "image": "https://example.com/images/english-writing.jpg",
+        "likes": 130,
+        "rating": 4.6,
+        "reviews": 40
+      },
+      {
+        "id": 7,
+        "title": "English for Travel",
+        "description": "Learn essential English phrases and vocabulary for traveling, including how to navigate airports, restaurants, hotels, and tourist attractions.",
+        "price": "$49",
+        "duration": "4 weeks",
+        "level": "Beginner to Intermediate",
+        "image": "https://example.com/images/english-for-travel.jpg",
+        "likes": 220,
+        "rating": 4.7,
+        "reviews": 80
+      },
+      {
+        "id": 8,
+        "title": "English for Job Interviews",
+        "description": "Prepare for job interviews by mastering common questions, vocabulary, and strategies to confidently present yourself in English.",
+        "price": "$89",
+        "duration": "5 weeks",
+        "level": "Intermediate",
+        "image": "https://example.com/images/job-interview-english.jpg",
+        "likes": 160,
+        "rating": 4.8,
+        "reviews": 55
+      }
+    ]  
