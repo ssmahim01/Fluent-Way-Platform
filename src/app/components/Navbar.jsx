@@ -21,7 +21,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-zinc-100 bg-zinc-300">
+    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-zinc-100 bg-zinc-200">
       <div className="flex justify-between items-center">
         <section className="flex gap-2 items-center">
           {/* Menu Toggle */}

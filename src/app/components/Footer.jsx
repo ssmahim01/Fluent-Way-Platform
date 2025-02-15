@@ -10,14 +10,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer
-      style={{
-        backgroundImage: "url('/assets/footer-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="border-t border-zinc-200 shadow-md"
     >
-      <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:p-14 p-5 gap-5">
+      <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 lg:pb-14 p-5 gap-5">
         <div className="md:w-1/2 pt-12">
           <div className="flex flex-col gap-4">
             <div className="flex md:gap-1 items-center">
@@ -60,26 +55,26 @@ const Footer = () => {
             </div>
 
             <div className="mt-3 space-y-3">
-              <h2 className="md:text-4xl text-3xl text-[#331A15] font-bold">
+              <h2 className="md:text-4xl text-3xl font-bold">
                 Get In Touch
               </h2>
 
-              <div className="flex gap-3 items-center *:text-lg font-serif font-medium">
-                <IoMdCall /> <span>+88 01818788816</span>
+              <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
+                <IoMdCall className="text-emerald-500" /> <span>+88 01818788816</span>
               </div>
 
-              <div className="flex gap-3 items-center *:text-lg font-serif font-medium">
-                <MdEmail /> <span>saymanshakilmahim03@gmail.com</span>
+              <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
+                <MdEmail className="text-violet-600" /> <span>saymanshakilmahim03@gmail.com</span>
               </div>
 
-              <div className="flex gap-3 items-center *:text-lg font-serif font-medium">
+              <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
                 <FaLocationDot /> <span>Shahporan, Sylhet, Bangladesh</span>
               </div>
             </div>
           </div>
         </div>
         <div className="md:w-2/5 w-full pt-14 md:pb-0 pb-5">
-          <h2 className="text-4xl md:text-left text-center text-[#331A15] font-bold pb-5">
+          <h2 className="text-4xl md:text-left text-center font-bold pb-5">
             Connect with Us
           </h2>
 
@@ -116,7 +111,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="h-12 text-white bg-zinc-700">
+      <div className="h-12 text-white bg-zinc-800">
         <p className="font-medium text-center pt-3">
           Copyright © {new Date().getFullYear()} - All Rights Reserved By{" "}
           <span className="font-bold">Fluent</span><span className="text-amber-500 font-bold">Way</span>
