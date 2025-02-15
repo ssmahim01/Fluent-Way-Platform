@@ -1,3 +1,4 @@
+"use client";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
@@ -12,7 +13,7 @@ const Footer = () => {
     <footer
       className="border-t border-zinc-200 shadow-md"
     >
-      <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 lg:pb-14 p-5 gap-5">
+      <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 md:pb-14 p-5 gap-5">
         <div className="md:w-1/2 pt-12">
           <div className="flex flex-col gap-4">
             <div className="flex md:gap-1 items-center">
@@ -26,14 +27,14 @@ const Footer = () => {
               <Button variant="ghost">
                 <Link
                   href="/"
-                  className="md:text-3xl text-xl font-extrabold text-opacity-60"
+                  className="text-3xl font-extrabold text-opacity-60"
                 >
                   Fluent<span className="text-orange-500">Way</span>
                 </Link>
               </Button>
             </div>
 
-            <p className="md:text-base font-medium text-sm">
+            <p className="lg:text-base font-medium text-sm">
               We strive to provide high-quality language courses. Users can
               enroll in their desired course and contact us directly with any
               questions.
@@ -55,7 +56,7 @@ const Footer = () => {
             </div>
 
             <div className="mt-3 space-y-3">
-              <h2 className="md:text-4xl text-3xl font-bold">
+              <h2 className="lg:text-4xl text-3xl font-bold">
                 Get In Touch
               </h2>
 
@@ -73,8 +74,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="md:w-2/5 w-full pt-14 md:pb-0 pb-5">
-          <h2 className="text-4xl md:text-left text-center font-bold pb-5">
+        <div className="md:w-2/5 w-full md:pt-14 pt-5 md:pb-0 pb-5">
+          <h2 className="lg:text-4xl text-3xl md:text-left text-center font-bold pb-5">
             Connect with Us
           </h2>
 
