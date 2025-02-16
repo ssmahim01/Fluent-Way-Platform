@@ -22,10 +22,10 @@ const Footer = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        `${process.env.NEXT_PUBLIC_SERVICE_ID}`,
-        `${process.env.NEXT_PUBLIC_TEMPLATE_ID}`,
+        process.env.SERVICE_ID,
+        process.env.TEMPLATE_ID,
         form.current,
-        `${process.env.NEXT_PUBLIC_PUBLIC_KEY}`
+        process.env.PUBLIC_KEY
       )
       .then((result) => {
         console.log(result.text);
@@ -54,7 +54,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-zinc-200 shadow-md">
       <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 md:pb-14 p-5 gap-5">
-        <div className="md:w-1/2 pt-12">
+        <div className="md:w-1/2 pt-8">
           <div className="flex flex-col gap-4">
             <div className="flex md:gap-1 items-center">
               <Image
@@ -153,6 +153,7 @@ const Footer = () => {
 
             <div>
               <Button
+                type="submit"
                 variant="default"
                 className="flex gap-2 items-center text-base font-bold px-6"
               >
