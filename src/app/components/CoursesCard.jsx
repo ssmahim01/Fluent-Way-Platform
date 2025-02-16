@@ -62,7 +62,7 @@ const CoursesCard = ({ course }) => {
           <CardItem
             translateZ={20}
             as={Link}
-            href={`/course/${course?.id}`}
+            href={`/course/${course?._id}`}
             className="px-4 py-2 rounded-md bg-neutral-900 dark:bg-white dark:text-black text-white flex gap-1 items-center font-bold"
           >
             <span>Read More</span>
