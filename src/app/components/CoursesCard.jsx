@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const CoursesCard = ({ course }) => {
   return (
-    <CardContainer key={course?.id} className="inter-var">
+    <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-full h-auto rounded-xl pt-1 pb-4 px-5 border">
         <CardItem translateZ="100" className="w-full mt-4">
           <img
