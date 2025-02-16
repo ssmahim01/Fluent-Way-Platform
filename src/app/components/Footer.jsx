@@ -1,3 +1,7 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
@@ -8,10 +12,47 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Footer = () => {
+  const form = useRef();
+  const [currentYear, setCurrentYear] = useState("");
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        `${process.env.NEXT_PUBLIC_SERVICE_ID}`,
+        `${process.env.NEXT_PUBLIC_TEMPLATE_ID}`,
+        form.current,
+        `${process.env.NEXT_PUBLIC_PUBLIC_KEY}`
+      )
+      .then((result) => {
+        console.log(result.text);
+        e.target.reset();
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Message sent successfully!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      })
+      .catch((error) => {
+        // console.log(error.text);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Failed to send the message! Please try again later.",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      });
+  };
+
   return (
-    <footer
-      className="border-t border-zinc-200 shadow-md"
-    >
+    <footer className="border-t border-zinc-200 shadow-md">
       <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 md:pb-14 p-5 gap-5">
         <div className="md:w-1/2 pt-12">
           <div className="flex flex-col gap-4">
@@ -44,27 +85,30 @@ const Footer = () => {
                 <FaFacebook className="text-cyan-600 w-10 h-10" />
               </Link>
               <Link href="https://github.com/ssmahim01" target="_blank">
-              <SiGithub className="text-zinc-800 w-10 h-10" />
+                <SiGithub className="text-zinc-800 w-10 h-10" />
               </Link>
               <Link href="https://www.instagram.com/iammz01" target="_blank">
-              <FaInstagram className="text-rose-500 w-10 h-10" />
+                <FaInstagram className="text-rose-500 w-10 h-10" />
               </Link>
-              <Link href="https://www.linkedin.com/in/sayman-shakil-mahim" target="_blank">
-              <FaLinkedin className="text-indigo-600 w-10 h-10" />
+              <Link
+                href="https://www.linkedin.com/in/sayman-shakil-mahim"
+                target="_blank"
+              >
+                <FaLinkedin className="text-indigo-600 w-10 h-10" />
               </Link>
             </div>
 
             <div className="mt-3 space-y-3">
-              <h2 className="lg:text-4xl text-3xl font-bold">
-                Get In Touch
-              </h2>
+              <h2 className="lg:text-4xl text-3xl font-bold">Get In Touch</h2>
 
               <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
-                <IoMdCall className="text-emerald-500" /> <span>+88 01818788816</span>
+                <IoMdCall className="text-emerald-500" />{" "}
+                <span>+88 01818788816</span>
               </div>
 
               <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
-                <MdEmail className="text-violet-600" /> <span>saymanshakilmahim03@gmail.com</span>
+                <MdEmail className="text-violet-600" />{" "}
+                <span>saymanshakilmahim03@gmail.com</span>
               </div>
 
               <div className="flex gap-2 items-center *:text-lg font-serif font-medium">
@@ -78,10 +122,11 @@ const Footer = () => {
             Connect with Us
           </h2>
 
-          <form className="space-y-3">
+          <form className="space-y-3" ref={form} onSubmit={handleSendMessage}>
             <div>
               <input
                 type="text"
+                name="from_name"
                 placeholder="Name"
                 className="w-full shadow-violet-200 shadow-sm border border-violet-100 py-3 pl-4 rounded-md"
                 required
@@ -91,6 +136,7 @@ const Footer = () => {
             <div>
               <input
                 type="email"
+                name="from_email"
                 placeholder="Email"
                 className="pl-4 w-full py-3 shadow-violet-200 shadow-sm border border-violet-100 rounded-md"
                 required
@@ -98,23 +144,30 @@ const Footer = () => {
             </div>
 
             <div className="pb-2">
-              <input
+              <textarea
+                name="message"
                 placeholder="Message"
-                className="w-full h-32 shadow-violet-200 shadow-sm border border-violet-100 pb-20 pl-4 rounded-md"
-              ></input>
+                className="w-full h-32 shadow-violet-200 shadow-sm border border-violet-100 pt-2 pb-20 pl-4 rounded-md"
+              ></textarea>
             </div>
 
-            <Button variant="default" className="flex gap-2 items-center text-base font-bold px-6">
-              <FaMessage /> <span>Send Message</span>
-            </Button>
+            <div>
+              <Button
+                variant="default"
+                className="flex gap-2 items-center text-base font-bold px-6"
+              >
+                <FaMessage /> <span>Send Message</span>
+              </Button>
+            </div>
           </form>
         </div>
       </div>
 
-      <div className="h-12 text-white bg-zinc-800">
+      <div className="pb-2 px-4 text-white bg-zinc-800">
         <p className="font-medium text-center pt-3">
-          Copyright © {new Date().getFullYear()} - All Rights Reserved By{" "}
-          <span className="font-bold">Fluent</span><span className="text-amber-500 font-bold">Way</span>
+          Copyright © {currentYear} - All Rights Reserved By{" "}
+          <span className="font-bold">Fluent</span>
+          <span className="text-amber-500 font-bold">Way</span>
         </p>
       </div>
     </footer>
