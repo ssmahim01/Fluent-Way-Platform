@@ -45,7 +45,7 @@ const CourseDetails = ({ course }) => {
 
           <p className="font-medium">{course?.description}</p>
 
-          <div className="flex justify-between items-center">
+          <div className="flex md:flex-row flex-col justify-between items-center">
             <p className="flex gap-2 items-center md:text-xl">
               <span className="font-bold">Level:</span>
               <BsPersonCheckFill className="text-xl" /> 
