@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "FluentWay",
+  title: "FluentWay | Home",
   description: "A Language Learning Platform",
 };
 

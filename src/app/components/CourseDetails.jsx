@@ -5,21 +5,51 @@ import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
 import StarRatings from "react-star-ratings";
 import { BsPersonCheckFill } from "react-icons/bs";
 import Heading from "./Heading";
+import { IoTimer } from "react-icons/io5";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const CourseDetails = ({ course }) => {
+  const router = useRouter();
+  const handleUpdateLike = async (id) => {
+    // console.log(id);
+
+    const likeStatus = {
+      status: "Liked",
+    };
+    const response = await fetch(`https://fluent-way.vercel.app/api/course/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(likeStatus),
+    });
+
+    if (response.ok) {
+      router.refresh();
+      Swal.fire({
+        title: "Successful!",
+        text: "You have liked this course.",
+        icon: "success",
+        timer: 2500,
+        showConfirmButton: false,
+      });
+    }
+  };
   return (
     <div className="mt-4 mb-10">
-        <Heading title={"Course Details"} subTitle={`Explore the details of ${course?.title} and discover how it can enhance your skills. Enroll to begin your learning journey today!`} />
-      <div className="lg:w-4/5 w-11/12 mx-auto rounded-lg flex flex-col lg:flex-row justify-between items-center gap-8 p-5 shadow-md border border-neutral-200">
-        <figure className="lg:w-3/4 w-full">
+      <Heading
+        title={"Course Details"}
+        subTitle={`Explore the details of ${course?.title} and discover how it can enhance your skills. Enroll to begin your learning journey today!`}
+      />
+
+      <div className="lg:w-4/5 w-11/12 mx-auto rounded-lg flex flex-col lg:flex-row justify-between items-center lg:gap-8 gap-4 p-4 shadow-md border border-neutral-200">
+        <figure className="lg:w-1/2 w-full lg:h-96 md:h-80 h-64">
           <img
-            className="w-full rounded-md"
+            className="w-full h-full rounded-md object-cover"
             src={course?.image}
             alt={course?.title}
           />
         </figure>
-        <div className="w-full space-y-3">
-          <h2 className="md:text-4xl text-2xl font-extrabold">{course?.title}</h2>
+        <div className="lg:w-1/2 w-full space-y-3 pr-2">
+          <h2 className="md:text-4xl text-3xl font-bold">{course?.title}</h2>
           <div className="flex justify-between items-center">
             <p className="md:text-xl flex gap-1 items-center font-semibold">
               <span className="font-bold">Price:</span>{" "}
@@ -27,50 +57,66 @@ const CourseDetails = ({ course }) => {
               <span>{course?.price}</span>
             </p>
 
-            <div className="flex items-center gap-2">
-              <StarRatings
-                rating={course?.rating}
-                starRatedColor="gold"
-                numberOfStars={5}
-                name="rating"
-                starDimension="24px"
-                starSpacing="2px"
-              />
-
-              <button className="text-sm p-3 bg-gray-100 hover:cursor-pointer rounded-full font-semibold">
-                {course?.rating}
-              </button>
-            </div>
+            <p className="flex gap-2 items-center md:text-xl">
+              <span className="font-bold">Duration:</span>
+              <IoTimer className="md:text-xl text-lg" />
+              <span className="font-semibold">{course?.duration}</span>
+            </p>
           </div>
 
-          <p className="font-medium">{course?.description}</p>
+          <div className="flex items-center gap-x-2">
+            <StarRatings
+              rating={course?.rating}
+              starRatedColor="gold"
+              numberOfStars={5}
+              name="rating"
+              starDimension="24px"
+              starSpacing="2px"
+            />
 
-          <div className="flex md:flex-row flex-col justify-between items-center">
+            <button className="text-sm py-2 px-3 bg-gray-100 hover:cursor-pointer rounded-full font-semibold">
+              {course?.rating}
+            </button>
+          </div>
+
+          <div>
+            <p className="font-medium">{course?.description}</p>
+          </div>
+
+          <div className="flex flex-col gap-3">
             <p className="flex gap-2 items-center md:text-xl">
               <span className="font-bold">Level:</span>
-              <BsPersonCheckFill className="text-xl" /> 
-              <span className="font-semibold">{course?.level}</span>
+              <BsPersonCheckFill className="md:text-xl text-lg" />
+              <span className="font-medium">{course?.level}</span>
             </p>
 
             <p className="flex gap-2 items-center md:text-xl">
               <span className="font-bold">Likes:</span>
-              <BiSolidLike className="text-xl" />
-              <span className="font-semibold">{course?.likes}</span>
+              <BiSolidLike className="md:text-xl text-lg" />
+              <span className="font-medium">{course?.likes}</span>
             </p>
           </div>
 
-              <div className="pt-2 flex justify-between items-center">
-                <button className="hover:bg-zinc-100 rounded-md p-2">
-                  <BiLike className="text-2xl" />
-                </button>
+          <div className="pt-3 flex justify-between items-center">
+            <button
+              onClick={() => handleUpdateLike(course?._id)}
+              className="hover:bg-zinc-100 rounded-md p-2"
+              disabled={course?.status === "Liked"}
+            >
+              {course?.status !== "Liked" ? (
+                <BiLike className="text-2xl" />
+              ) : (
+                <BiSolidLike className="text-2xl" />
+              )}
+            </button>
 
-                <button className="p-[3px] relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-                  <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent flex gap-2 items-center">
-                    <span>Enroll Course</span>
-                    <FaCalendarCheck className="text-xl" />
-                  </div>
-                </button>
+            <button className="p-[3px] relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent flex gap-2 items-center font-bold">
+                <span>Enroll Course</span>
+                <FaCalendarCheck className="text-xl" />
+              </div>
+            </button>
           </div>
         </div>
       </div>
