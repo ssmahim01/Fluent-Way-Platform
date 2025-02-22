@@ -19,6 +19,9 @@ const CourseDetails = ({ course }) => {
     };
     const response = await fetch(`https://fluent-way.vercel.app/api/course/${id}`, {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      } ,
       body: JSON.stringify(likeStatus),
     });
 
@@ -99,6 +102,7 @@ const CourseDetails = ({ course }) => {
 
           <div className="pt-3 flex justify-between items-center">
             <button
+            type="submit"
               onClick={() => handleUpdateLike(course?._id)}
               className="hover:bg-zinc-100 rounded-md p-2"
               disabled={course?.status === "Liked"}

@@ -11,6 +11,7 @@ const Hero = () => {
         <div className="flex-1">
           <figure className="md:block hidden">
             <motion.img
+            fetchPriority="high"
               animate={{ y: [20, 40, 20] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-r-8 border-t-8 border-violet-600 rounded-lg"
@@ -21,6 +22,7 @@ const Hero = () => {
 
           <figure className="md:block hidden">
             <motion.img
+            fetchPriority="high"
               animate={{ x: [30, 80, 30] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-l-8 border-b-8 border-zinc-700 rounded-lg"
@@ -31,6 +33,7 @@ const Hero = () => {
 
           <figure className="md:hidden block my-5">
             <img
+            fetchPriority="high"
               className="w-full border-r-8 border-t-8 border-violet-600 rounded-lg"
               src="/assets/studying-together.jpg"
               alt="Students are studying together"
@@ -39,6 +42,7 @@ const Hero = () => {
 
           <figure className="md:hidden block">
             <img
+            fetchPriority="high"
               className="w-full border-l-8 border-b-8 border-zinc-700 rounded-lg"
               src="/assets/students-work.jpg"
               alt="Students are learning"
@@ -54,12 +58,12 @@ const Hero = () => {
           Unlock your potential with expert-led courses in IELTS, Spoken English, and more. Our interactive lessons and practical exercises are designed to help you improve your language skills effectively. Whether you're preparing for an exam, enhancing your communication skills, or learning for personal growth, we provide the right resources to support your journey.
           </p>
 
-          <Link href="/all-courses">
-           <Button variant="default" className="flex gap-2 items-center font-bold px-4">
+           <Button variant="default">
+          <Link href="/all-courses" className="flex gap-2 items-center font-bold px-4">
             <span className="text-lg">Get Started</span>
             <FaArrowRight className="text-xl" /> 
-           </Button>
           </Link>
+           </Button>
         </div>
       </div>
     </div>
