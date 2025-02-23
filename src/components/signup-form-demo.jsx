@@ -21,7 +21,7 @@ export default function SignupForm() {
 
     const res = await registerUser({ name, email, photoUrl, password });
     if (res.acknowledged) {
-      router.push("/login");
+      router.push("/");
     }
   };
 
@@ -34,7 +34,7 @@ export default function SignupForm() {
         Register by your personal information
       </p>
 
-      <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-100 dark:bg-black">
+      <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
@@ -78,10 +78,11 @@ export default function SignupForm() {
             Register &rarr;
             <BottomGradient />
           </button>
-        </form>
 
-      </div>
+          <p className="pt-4 text-neutral-700 font-semibold text-center px-4">Already have an account, Please <span className="text-indigo-600 font-bold">login</span></p>
+        </form>
         <GoogleLogin />
+      </div>
     </div>
   );
 }
