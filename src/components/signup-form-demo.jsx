@@ -6,12 +6,14 @@ import { cn } from "@/lib/utils";
 import { registerUser } from "@/app/actions/auth/registerUser";
 import { useRouter } from "next/navigation";
 import GoogleLogin from "@/app/components/GoogleLogin";
+import Swal from "sweetalert2";
+import Link from "next/link";
 
 export default function SignupForm() {
   const router = useRouter();
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    console.log("Sign up form submitted");
     const form = e.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
     const email = form.email.value;
@@ -21,7 +23,20 @@ export default function SignupForm() {
 
     const res = await registerUser({ name, email, photoUrl, password });
     if (res.acknowledged) {
+      Swal.fire({
+        title: "Successful!",
+        text: `Successfully registered an account of ${name}`,
+        icon: "success",
+        timer: 3500,
+        showConfirmButton: false,
+      });
       router.push("/");
+    } else {
+      Swal.fire({
+        title: "Failed!",
+        text: "Failed to Login",
+        icon: "error",
+      });
     }
   };
 
@@ -35,7 +50,7 @@ export default function SignupForm() {
       </p>
 
       <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRegister}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
               <Label htmlFor="firstName">First name</Label>
@@ -79,8 +94,14 @@ export default function SignupForm() {
             <BottomGradient />
           </button>
 
-          <p className="pt-4 text-neutral-700 font-semibold text-center px-4">Already have an account, Please <span className="text-indigo-600 font-bold">login</span></p>
+          <p className="pt-4 text-neutral-700 font-semibold text-center px-4">
+            Already have an account, Please{" "}
+            <Link href="/authentication/login">
+              <span className="text-indigo-600 font-bold">Login</span>
+            </Link>
+          </p>
         </form>
+        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
         <GoogleLogin />
       </div>
     </div>

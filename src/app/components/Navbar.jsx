@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { RiMenuFold2Fill } from "react-icons/ri";
 import LoginButton from "./LoginButton";
+import { signOut, useSession } from "next-auth/react";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   const navigationMenu = (
     <>
@@ -83,10 +86,33 @@ const Navbar = () => {
           {navigationMenu}
         </ul>
 
-        {/* Login Button */}
-        <div>
-          <LoginButton />
-        </div>
+        {status === "authenticated" ? (
+          <>
+            <Image
+              className="rounded-full border-4 border-neutral-500 mr-3"
+              src={session?.user?.image}
+              alt="Profile Image"
+              width={50}
+              height={50}
+              priority
+              referrerPolicy="no-referrer"
+            />
+
+            {/* Logout button */}
+            <button
+              onClick={() => signOut()}
+              className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 mr-4 items-center rounded-md"
+            >
+              <FaSignOutAlt className="text-xl" />{" "}
+              <span className="text-base">Log Out</span>
+            </button>
+          </>
+        ) : (
+          <>
+            {/* Login Button */}
+            <LoginButton />
+          </>
+        )}
       </div>
     </div>
   );

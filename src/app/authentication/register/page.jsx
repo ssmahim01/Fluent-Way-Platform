@@ -1,7 +1,12 @@
 import SignupForm from "@/components/signup-form-demo";
 
-const SignUp = () => {
+export const metadata = {
+    title: "FluentWay | Register",
+    description: "Users can register via their valid information",
+  };
+
+const Register = () => {
     return <SignupForm />
 };
 
-export default SignUp;
+export default Register;
