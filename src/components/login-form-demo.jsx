@@ -44,19 +44,19 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="my-10 max-w-md w-full mx-auto">
-      <h2 className="font-bold text-2xl text-neutral-800 dark:text-neutral-200">
+    <div className="max-w-md w-full mx-auto">
+      <h2 className="font-bold text-3xl text-neutral-100">
         Welcome to Fluent<span className="text-indigo-600">Way</span>
       </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+      <p className="text-sm max-w-sm mt-2 text-neutral-300">
         Login via your registered email & password
       </p>
-        <GoogleLogin />
+
       <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
-        
+        <GoogleLogin />
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
         
-        <p className="pt-4 text-neutral-700 font-semibold text-center px-4 pb-4">
+        <p className="pt-2 pb-4 text-neutral-700 font-semibold text-center px-4">
           Do not have any account, Please{" "}
           <Link href="/authentication/register">
             <span className="text-indigo-500 font-bold">Register</span>

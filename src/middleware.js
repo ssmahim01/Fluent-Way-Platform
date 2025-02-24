@@ -11,7 +11,7 @@ export const middleware = async (req) => {
     if (token) {
         return NextResponse.next()
     } else {
-        return NextResponse.redirect(new URL('/login', req.url))
+        return NextResponse.redirect(new URL('/authentication/login', req.url))
     }
 
 }

@@ -41,11 +41,11 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="my-10 max-w-md w-full mx-auto">
-      <h2 className="font-bold text-2xl text-neutral-800 dark:text-neutral-200">
+    <div className="max-w-md w-full mx-auto">
+      <h2 className="font-bold text-3xl text-neutral-100">
         Welcome to Fluent<span className="text-indigo-600">Way</span>
       </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+      <p className="text-sm max-w-sm mt-2 text-neutral-300">
         Register by your personal information
       </p>
 

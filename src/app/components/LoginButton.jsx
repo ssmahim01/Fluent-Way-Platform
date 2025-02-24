@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const LoginButton = () => {
   return (
-    <Link href="/login">
+    <Link href="/authentication/login">
       <Button variant="default" className="flex gap-2 items-center font-bold">
         <CgLogIn className="text-2xl" />{" "}
         <span className="text-base">Login</span>
