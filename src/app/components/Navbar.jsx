@@ -8,6 +8,7 @@ import { RiMenuFold2Fill } from "react-icons/ri";
 import LoginButton from "./LoginButton";
 import { signOut, useSession } from "next-auth/react";
 import { FaSignOutAlt } from "react-icons/fa";
+import ActiveLink from "./ActiveLink";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +16,11 @@ const Navbar = () => {
 
   const navigationMenu = (
     <>
-      <Link href="/">Home</Link>
-      <Link href="/all-courses">All Courses</Link>
-      <Link href="/enrolled-courses">Enrolled Courses</Link>
-      <Link href="/about-us">About Us</Link>
-      <Link href="/contact">Contact</Link>
+      <ActiveLink href="/">Home</ActiveLink>
+      <ActiveLink href="/all-courses">All Courses</ActiveLink>
+      <ActiveLink href="/enrolled-courses">Enrolled Courses</ActiveLink>
+      <ActiveLink href="/about-us">About Us</ActiveLink>
+      <ActiveLink href="/contact">Contact</ActiveLink>
     </>
   );
 
@@ -73,7 +74,7 @@ const Navbar = () => {
             <Button variant="ghost">
               <Link
                 href="/"
-                className="md:text-2xl text-xl font-extrabold text-opacity-60"
+                className="md:text-2xl text-xl font-extrabold text-opacity-60 md:block hidden"
               >
                 Fluent<span className="text-orange-500">Way</span>
               </Link>
@@ -87,14 +88,12 @@ const Navbar = () => {
         </ul>
 
         {status === "authenticated" ? (
-          <>
-            <Image
-              className="rounded-full border-4 border-neutral-500 mr-3"
+          <div className="flex gap-2 items-center">
+            <img
+              className="rounded-full w-12 h-12 border-4 border-neutral-500"
               src={session?.user?.image}
-              alt="Profile Image"
-              width={50}
-              height={50}
-              priority
+              alt={session?.user?.name}
+              fetchPriority="high"
               referrerPolicy="no-referrer"
             />
 
@@ -106,7 +105,7 @@ const Navbar = () => {
               <FaSignOutAlt className="text-xl" />{" "}
               <span className="text-base">Log Out</span>
             </button>
-          </>
+          </div>
         ) : (
           <>
             {/* Login Button */}

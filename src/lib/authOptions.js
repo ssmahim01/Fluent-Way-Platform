@@ -2,6 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
 import connectMongoDB from "./connectMongoDB";
 import loginUser from "@/app/actions/auth/loginUser";
+import { signIn } from "next-auth/react";
 
 export const authOptions = {
     providers: [
@@ -38,7 +39,7 @@ export const authOptions = {
       }),
     ],
     pages: {
-      signIn: "/login"
+      signIn: "/authentication/login"
     },
     secret: process.env.NEXT_AUTH_SECRET,
     callbacks: {

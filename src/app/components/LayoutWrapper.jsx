@@ -13,7 +13,7 @@ const LayoutWrapper = ({ children }) => {
     <>
       <NextAuthProvider>
         {!isAuthPage && <Navbar />}
-        <main className="bg-neutral-100 dark:bg-neutral-800 py-24 min-h-[calc(100vh-100px)]">
+        <main className="bg-neutral-100 dark:bg-neutral-800 min-h-screen">
           {children}
         </main>
         {!isAuthPage && <Footer />}

@@ -17,6 +17,10 @@ const AllCourses = async () => {
   const singleCourseData = connectMongoDB("allCourses");
   const courses = await singleCourseData.find({}).toArray();
 
-  return <CoursesContent courses={courses} />;
+  return (
+    <section className="pt-[4rem] pb-[2rem]">
+      <CoursesContent courses={courses} />
+    </section>
+  );
 };
 export default AllCourses;

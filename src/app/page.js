@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="pt-[4rem] pb-[2rem]">
       {/* Hero Section */}
       <Hero />
 

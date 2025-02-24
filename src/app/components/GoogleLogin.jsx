@@ -3,7 +3,6 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Swal from "sweetalert2";
 
 const GoogleLogin = () => {
   const session = useSession();
@@ -16,13 +15,6 @@ const GoogleLogin = () => {
   useEffect(() => {
     if (session.status === "loading") return;
     if (session.status === "authenticated") {
-      Swal.fire({
-        title: "Successful!",
-        text: "Successfully logged in via google",
-        icon: "success",
-        timer: 3500,
-        showConfirmButton: false,
-      });
       router.push("/");
     }
   }, [session.status]);
