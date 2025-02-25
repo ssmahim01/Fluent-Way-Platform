@@ -7,7 +7,9 @@ export const registerUser = async (payload) => {
     // console.log(payload);
     // Receive values from payload
     const {email, password} = payload;
-    if(!email || !password) return null;
+    if(!email || !password){
+        throw new Error("Email and password are required");
+    }
 
     // Collect user data then find by email query
     const userCollection = connectMongoDB("allUsers");
@@ -18,7 +20,7 @@ export const registerUser = async (payload) => {
         payload.password = hashedPassword;
         const postResult = await userCollection.insertOne(payload);
         postResult.insertedId = postResult.insertedId.toString();
-        revalidatePath("/login");
+        revalidatePath("/authentication/login");
         return postResult;
     }
 

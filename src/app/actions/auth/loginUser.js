@@ -6,13 +6,23 @@ const loginUser = async(payload) => {
     // Receive values from payload
     const {email, password} = payload;
 
+    if(!payload?.email || !payload?.password){
+        throw new Error("Email and password are required");
+    }
+
      // Collect user data then find by email query
     const userCollection = connectMongoDB("allUsers");
     const user = await userCollection.findOne({email});
 
-    if(!user) return null;
-    const isPassOk = bcrypt.compare(user?.password, password);
-    if(!isPassOk) return null;
+    if(!user) {
+        throw new Error("User not found");
+    }
+
+    const isPassOk = await bcrypt.compare(password, user.password);
+    if(!isPassOk){
+        throw new Error("Invalid Password");
+    }
+    
     return user;
 };
 

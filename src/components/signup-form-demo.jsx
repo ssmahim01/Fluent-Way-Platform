@@ -17,11 +17,11 @@ export default function SignupForm() {
     const form = e.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
     const email = form.email.value;
-    const photoUrl = form.photoUrl.value;
+    const image = form.photoUrl.value;
     const password = form.password.value;
-    // console.table(name, email, photoUrl, password);
+    // console.table(name, email, image, password);
 
-    const res = await registerUser({ name, email, photoUrl, password });
+    const res = await registerUser({ name, email, image, password });
     if (res.acknowledged) {
       Swal.fire({
         title: "Successful!",
@@ -30,7 +30,7 @@ export default function SignupForm() {
         timer: 3500,
         showConfirmButton: false,
       });
-      router.push("/");
+      router.push("/authentication/login");
     } else {
       Swal.fire({
         title: "Failed!",
