@@ -5,14 +5,21 @@ import {
   ModalFooter,
   useModal,
 } from "@/components/ui/animated-modal";
-import { MdTitle } from "react-icons/md";
 import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
-import { IoTimer } from "react-icons/io5";
+import { IoDocumentText, IoTimer } from "react-icons/io5";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export function EnrollModal({ course, session }) {
-  const handleBook = (e) => {
-    e.preventDefault();
+  const images = ["/assets/fluent-way.webp", `${course?.image}`];
+  const router = useRouter();
+  const { setOpen } = useModal();
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
+  const handleBook = async (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -22,24 +29,52 @@ export function EnrollModal({ course, session }) {
     const coursePrice = course?.price;
     const courseDuration = course?.duration;
 
-    const bookInfo = {
-      name,
-      email,
-      number,
-      courseTitle,
-      coursePrice,
-      courseDuration,
-    };
+    try {
+      const bookInfo = {
+        name,
+        email,
+        number,
+        courseTitle,
+        coursePrice,
+        courseDuration,
+        status: "In-Progress"
+      };
+      // console.table(bookInfo);
 
-    console.table(bookInfo);
+      const response = await fetch(
+        "http://localhost:3000/api/booked-course",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookInfo),
+        }
+      );
+
+      if (response.ok && session?.user?.email) {
+        router.refresh();
+        setOpen(false);
+        Swal.fire({
+          title: "Successful!",
+          text: "You have booked in this course.",
+          icon: "success",
+          timer: 2500,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      // console.log(error);
+
+      Swal.fire({
+        title: "Failed!",
+        text: `${error.message}` || "Something went wrong!",
+        icon: "error",
+        timer: 3500,
+        showConfirmButton: false,
+      });
+    }
   };
-
-  const { setOpen } = useModal();
-  const handleCancel = () => {
-    setOpen(false);
-  };
-
-  const images = ["/assets/fluent-way.webp", `${course?.image}`];
 
   return (
     <div className="overflow-y-scroll overflow-x-hidden flex flex-col">
@@ -48,7 +83,7 @@ export function EnrollModal({ course, session }) {
           <h4 className="text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mt-2 mb-4">
             Book your course to{" "}
             <span className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 border border-gray-200">
-             {course?.title}
+              {course?.title}
             </span>{" "}
             now! 📚
           </h4>
@@ -69,25 +104,23 @@ export function EnrollModal({ course, session }) {
                   rotate: 0,
                   zIndex: 100,
                 }}
-                className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
+                className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 w-1/2 overflow-hidden"
               >
                 <img
                   src={image}
                   alt="course images"
-                  width="500"
-                  height="500"
-                  className="rounded-lg h-32 w-full md:h-44 object-cover flex-shrink-0"
+                  className="rounded-lg h-36 w-full md:h-48 object-cover flex-shrink-0"
                 />
               </motion.div>
             ))}
           </div>
 
-            <div className="pt-10 flex items-center justify-start font-semibold">
-              <MdTitle className="mr-1 text-neutral-700 dark:text-neutral-300 h-6 w-6" />
-              <span className="text-neutral-700 dark:text-neutral-300 text-lg">
-                {course?.title}
-              </span>
-            </div>
+          <div className="pt-10 flex items-center justify-start font-semibold">
+            <IoDocumentText className="mr-1 text-neutral-700 dark:text-neutral-300 h-6 w-6" />
+            <span className="text-neutral-700 dark:text-neutral-300 text-lg">
+              {course?.title}
+            </span>
+          </div>
 
           <div className="pt-3 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm">
             <div className="flex items-center justify-center">
@@ -138,6 +171,8 @@ export function EnrollModal({ course, session }) {
               <input
                 type="number"
                 name="contactNumber"
+                max={11}
+                min={11}
                 placeholder="Provide your contact number"
                 className="pl-2 text-neutral-500 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
