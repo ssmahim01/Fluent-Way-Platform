@@ -25,7 +25,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-zinc-100 bg-zinc-200">
+    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-neutral-100 bg-indigo-50">
       <div className="flex justify-between items-center">
         <section className="flex gap-2 items-center">
           {/* Menu Toggle */}
@@ -37,7 +37,7 @@ const Navbar = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="pt-3 pb-8">
-                <div className="flex gap-1 items-center border-b border-violet-200 shadow-sm px-5 pb-2">
+                <div className="flex gap-1 items-center border-b border-neutral-200 shadow-sm px-5 pb-2">
                   <Image
                     src="/assets/fluent-way.webp"
                     alt="Logo"
@@ -90,7 +90,7 @@ const Navbar = () => {
         {status === "authenticated" ? (
           <div className="flex gap-2 items-center">
             <img
-              className="rounded-full w-12 h-12 border-4 border-neutral-500"
+              className="rounded-full w-12 h-12 border-4 border-amber-400"
               src={session?.user?.image}
               alt={session?.user?.name}
               fetchPriority="high"
