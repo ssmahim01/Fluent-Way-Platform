@@ -8,8 +8,13 @@ import Heading from "./Heading";
 import { IoTimer } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { Modal, ModalBody, ModalTrigger } from "@/components/ui/animated-modal";
+import { EnrollModal } from "./EnrollModal";
+import { useSession } from "next-auth/react";
 
 const CourseDetails = ({ course }) => {
+  const {data:session} = useSession();
+
   const router = useRouter();
   const handleUpdateLike = async (id) => {
     // console.log(id);
@@ -17,13 +22,16 @@ const CourseDetails = ({ course }) => {
     const likeStatus = {
       status: "Liked",
     };
-    const response = await fetch(`https://fluent-way.vercel.app/api/course/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      } ,
-      body: JSON.stringify(likeStatus),
-    });
+    const response = await fetch(
+      `https://fluent-way.vercel.app/api/course/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(likeStatus),
+      }
+    );
 
     if (response.ok) {
       router.refresh();
@@ -37,7 +45,7 @@ const CourseDetails = ({ course }) => {
     }
   };
   return (
-    <div className="mt-4 mb-10">
+    <div className="pt-20 pb-10">
       <Heading
         title={"Course Details"}
         subTitle={`Explore the details of ${course?.title} and discover how it can enhance your skills. Enroll to begin your learning journey today!`}
@@ -102,7 +110,7 @@ const CourseDetails = ({ course }) => {
 
           <div className="pt-3 flex justify-between items-center">
             <button
-            type="submit"
+              type="submit"
               onClick={() => handleUpdateLike(course?._id)}
               className="hover:bg-zinc-100 rounded-md p-2"
               disabled={course?.status === "Liked"}
@@ -114,13 +122,23 @@ const CourseDetails = ({ course }) => {
               )}
             </button>
 
-            <button className="p-[3px] relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
-              <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent flex gap-2 items-center font-bold">
-                <span>Enroll Course</span>
-                <FaCalendarCheck className="text-xl" />
-              </div>
-            </button>
+            <Modal>
+              <ModalTrigger className="text-white flex justify-center group/modal-btn">
+                <button className="p-[3px] relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+                  <div className="px-8 py-2 bg-black rounded-[6px]  relative group text-white hover:bg-transparent flex gap-2 items-center font-bold group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+                    <span>Enroll Course</span>
+                    <FaCalendarCheck className="text-xl" />
+                  </div>
+                </button>
+                <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20 text-2xl">
+                  📚
+                </div>
+              </ModalTrigger>
+              <ModalBody>
+                <EnrollModal course={course} session={session} />
+              </ModalBody>
+            </Modal>
           </div>
         </div>
       </div>

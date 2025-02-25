@@ -44,24 +44,28 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto">
-      <h2 className="font-bold text-3xl text-neutral-100">
-        Welcome to Fluent<span className="text-indigo-600">Way</span>
+    <div className="max-w-md w-11/12 mx-auto">
+      <h2 className="font-extrabold text-3xl text-neutral-100">
+        Welcome to Fluent<span className="text-orange-500">Way</span>
       </h2>
-      <p className="text-sm max-w-sm mt-2 text-neutral-300">
+      <p className="max-w-sm mt-2 text-neutral-300">
         Login via your registered email & password
       </p>
 
-      <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
+      <div className="mt-4 rounded-md md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
         <GoogleLogin />
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
         
-        <p className="pt-2 pb-4 text-neutral-700 font-semibold text-center px-4">
+        <p className="pt-0 pb-4 text-neutral-700 font-semibold text-center px-4">
           Do not have any account, Please{" "}
           <Link href="/authentication/register">
             <span className="text-indigo-500 font-bold">Register</span>
           </Link>
         </p>
+
+        <div className="flex gap-2 items-center pt-0 pb-3 w-11/12 mx-auto">
+         <div className="border border-neutral-300 w-1/4" /> <p className="md:w-[44%] w-1/2 text-neutral-500 font-semibold text-sm">Or Login With Email</p> <div className="border border-neutral-300 w-1/4" />
+        </div>
         <form onSubmit={handleLogin}>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>

@@ -41,15 +41,15 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto">
-      <h2 className="font-bold text-3xl text-neutral-100">
-        Welcome to Fluent<span className="text-indigo-600">Way</span>
+    <div className="max-w-md w-11/12 mx-auto">
+      <h2 className="font-extrabold text-3xl text-neutral-100">
+        Welcome to Fluent<span className="text-orange-500">Way</span>
       </h2>
-      <p className="text-sm max-w-sm mt-2 text-neutral-300">
+      <p className="max-w-sm mt-2 text-neutral-300">
         Register by your personal information
       </p>
 
-      <div className="mt-4 rounded-none md:rounded-xl p-4 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
+      <div className="mt-4 rounded-md md:rounded-xl p-6 md:p-8 shadow-input bg-neutral-200 dark:bg-black">
         <form onSubmit={handleRegister}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
             <LabelInputContainer>
