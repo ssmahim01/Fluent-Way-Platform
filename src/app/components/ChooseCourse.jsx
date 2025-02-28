@@ -1,4 +1,4 @@
-import connectMongoDB from "@/lib/connectMongoDB";
+// import connectMongoDB from "@/lib/connectMongoDB";
 import CoursesCard from "./CoursesCard";
 import Heading from "./Heading";
 

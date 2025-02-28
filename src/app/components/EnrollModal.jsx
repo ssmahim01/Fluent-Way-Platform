@@ -26,6 +26,7 @@ export function EnrollModal({ course, session }) {
     const number = form.contactNumber.value;
 
     const courseTitle = course?.title;
+    const courseImage = course?.image;
     const coursePrice = course?.price;
     const courseDuration = course?.duration;
 
@@ -34,6 +35,7 @@ export function EnrollModal({ course, session }) {
         name,
         email,
         number,
+        courseImage,
         courseTitle,
         coursePrice,
         courseDuration,
@@ -171,7 +173,6 @@ export function EnrollModal({ course, session }) {
               <input
                 type="number"
                 name="contactNumber"
-                max={11}
                 min={11}
                 placeholder="Provide your contact number"
                 className="pl-2 text-neutral-500 font-semibold py-2 w-full rounded-md border border-neutral-400"
