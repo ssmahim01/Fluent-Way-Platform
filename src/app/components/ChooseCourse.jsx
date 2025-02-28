@@ -3,7 +3,7 @@ import CoursesCard from "./CoursesCard";
 import Heading from "./Heading";
 
 export const fetchCoursesFromDB = async () => {
-  const response = await fetch("https://fluent-way.vercel.app/api/courses");
+  const response = await fetch("http://localhost:3000/api/courses");
   const data = await response.json();
   return data.slice(0, 6);
 };

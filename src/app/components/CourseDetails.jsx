@@ -23,7 +23,7 @@ const CourseDetails = ({ course }) => {
       status: "Liked",
     };
     const response = await fetch(
-      `https://fluent-way.vercel.app/api/course/${id}`,
+      `http://localhost:3000/api/course/${id}`,
       {
         method: "PATCH",
         headers: {

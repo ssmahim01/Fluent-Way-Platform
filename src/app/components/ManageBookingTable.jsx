@@ -1,4 +1,5 @@
 "use client";
+import { Modal, ModalBody, ModalTrigger } from "@/components/ui/animated-modal";
 import {
   Table,
   TableBody,
@@ -10,10 +11,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import EditBooking from "./EditBooking";
 
 const ManageBookingTable = ({ bookingData }) => {
   const router = useRouter();
@@ -34,21 +35,23 @@ const ManageBookingTable = ({ bookingData }) => {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       }).then(async (result) => {
-        const response = await fetch(
-          `http://localhost:3000/api/booked-course/${id}`,
-          {
-            method: "DELETE",
+        if (result.isConfirmed) {
+          const response = await fetch(
+            `http://localhost:3000/api/booked-course/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
+          if (response.ok && session?.user?.email) {
+            router.refresh();
+            Swal.fire({
+              title: "Successful!",
+              text: "Your booked course has been deleted",
+              icon: "success",
+              timer: 3000,
+              showConfirmButton: false,
+            });
           }
-        );
-        if (response.ok && session?.user?.email) {
-          router.refresh();
-          Swal.fire({
-            title: "Successful!",
-            text: "Your booked course has been deleted",
-            icon: "success",
-            timer: 3000,
-            showConfirmButton: false,
-          });
         }
       });
     } catch (error) {
@@ -79,6 +82,7 @@ const ManageBookingTable = ({ bookingData }) => {
               <TableHead className="text-white/90">Fee</TableHead>
               <TableHead className="text-white/90">Duration</TableHead>
               <TableHead className="text-white/90">Number</TableHead>
+              <TableHead className="text-white/90">Status</TableHead>
               <TableHead className="text-white/90">Edit</TableHead>
               <TableHead className="text-white/90">Delete</TableHead>
             </TableRow>
@@ -100,12 +104,22 @@ const ManageBookingTable = ({ bookingData }) => {
                 <TableCell>{booking?.courseDuration}</TableCell>
                 <TableCell>{booking?.number}</TableCell>
                 <TableCell>
-                  <Link href={`/update-booking/${booking?._id}`}>
-                    <button className="py-2 px-5 bg-neutral-800 text-white flex gap-2 items-center">
-                      <FaEdit className="text-white/90 text-lg" />
-                      <span className="md:block hidden">Edit</span>
-                    </button>
-                  </Link>
+                  <div className={`w-11/12 py-[2px] mx-auto rounded-full text-white font-bold ${booking?.status === "In-Progress" && "bg-amber-500"} ${booking?.status === "Cancel" && "bg-rose-500"} ${booking?.status === "Done" && "bg-green-600"}`}>
+                    <p className="text-center">{booking?.status}</p>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <Modal>
+                    <ModalTrigger className="text-white flex justify-center group/modal-btn">
+                      <button disabled={booking?.status === "Cancel"} className="disabled:cursor-not-allowed disabled:bg-neutral-300 py-2 px-5 bg-neutral-800 text-white flex gap-2 items-center">
+                        <FaEdit className="text-white/90 text-lg" />
+                        <span className="md:block hidden">Edit</span>
+                      </button>
+                    </ModalTrigger>
+                    <ModalBody>
+                      <EditBooking booking={booking} />
+                    </ModalBody>
+                  </Modal>
                 </TableCell>
                 <TableCell className="text-right">
                   <button
