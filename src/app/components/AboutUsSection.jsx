@@ -2,7 +2,7 @@
 const AboutUsSection = () => {
   return (
     <div className="pt-16 pb-10">
-      <section className="bg-neutral-800 px-6 text-white py-16 text-center">
+      <section className="bg-neutral-800 border-b border-neutral-600 dark:border-neutral-800 shadow-md px-6 text-white py-16 text-center">
         <h1 className="text-4xl font-bold">About FluentWay</h1>
         <p className="mt-4 font-medium">
           Empowering learners to achieve English fluency with our expert-led
@@ -37,7 +37,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="py-8 px-6 bg-neutral-50">
+      <section className="py-8 px-6 bg-neutral-50 dark:bg-neutral-800">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-semibold text-indigo-600 mb-4 text-center">
             How FluentWay Works
@@ -51,7 +51,7 @@ const AboutUsSection = () => {
           </p>
 
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-indigo-600">
                 Explore Courses
               </h3>
@@ -60,7 +60,7 @@ const AboutUsSection = () => {
                 one that fits your needs.
               </p>
             </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-indigo-600">
                 Track Your Progress
               </h3>
@@ -69,7 +69,7 @@ const AboutUsSection = () => {
                 personalized feedback.
               </p>
             </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold text-indigo-600">
                 Manage Your Bookings
               </h3>

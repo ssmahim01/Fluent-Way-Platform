@@ -89,7 +89,7 @@ const ManageBookingTable = ({ bookingData }) => {
           </TableHeader>
           <TableBody>
             {bookingData.map((booking) => (
-              <TableRow className="hover:bg-neutral-200" key={booking?._id}>
+              <TableRow className="hover:bg-neutral-200 dark:hover:bg-neutral-700" key={booking?._id}>
                 <TableCell>
                   <img
                     src={booking?.courseImage}
