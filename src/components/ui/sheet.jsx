@@ -10,7 +10,7 @@ const SheetContent = React.forwardRef(({ className, ...props }, ref) => (
     <Dialog.Overlay className="fixed inset-0" />
     <Dialog.Content
       ref={ref}
-      className={`z-20 fixed inset-y-0 left-0 bg-neutral-200 md:w-96 w-64 shadow-lg border-r border-neutral-200 ${className}`}
+      className={`z-20 fixed inset-y-0 left-0 bg-neutral-200 dark:bg-neutral-800 md:w-96 w-64 shadow-lg border-r border-neutral-200 dark:border-neutral-800 ${className}`}
       {...props}
     />
   </Dialog.Portal>

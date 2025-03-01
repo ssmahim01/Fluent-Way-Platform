@@ -9,10 +9,19 @@ import LoginButton from "./LoginButton";
 import { signOut, useSession } from "next-auth/react";
 import { FaSignOutAlt } from "react-icons/fa";
 import ActiveLink from "./ActiveLink";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: session, status } = useSession();
+  const { setTheme } = useTheme();
 
   const navigationMenu = (
     <>
@@ -27,7 +36,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-neutral-100 bg-neutral-50">
+    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-neutral-100 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800">
       <div className="flex justify-between items-center">
         <section className="flex gap-2 items-center">
           {/* Menu Toggle */}
@@ -39,7 +48,7 @@ const Navbar = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="pt-3 pb-8 flex flex-col">
-                <div className="flex gap-1 items-center border-b border-neutral-200 shadow-sm px-5 pb-2">
+                <div className="flex gap-1 items-center border-b border-neutral-200 dark:border-neutral-700 shadow-sm px-5 pb-2">
                   <Image
                     src="/assets/fluent-way.webp"
                     alt="Logo"
@@ -83,20 +92,41 @@ const Navbar = () => {
 
                       {/* Logout button */}
                       <div className="mt-4">
-                      <button
-                        onClick={() => signOut()}
-                        className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 items-center rounded-md"
-                      >
-                        <FaSignOutAlt className="text-xl" />{" "}
-                        <span className="text-base">Log Out</span>
-                      </button>
+                        <button
+                          onClick={() => signOut()}
+                          className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 items-center rounded-md"
+                        >
+                          <FaSignOutAlt className="text-xl" />{" "}
+                          <span className="text-base">Log Out</span>
+                        </button>
                       </div>
                     </>
                   ) : (
-                    <>
+                    <div className="flex gap-3 md:mt-24 mt-28 w-full justify-between items-center">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="outline" size="icon">
+                            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                            <span className="sr-only">Toggle theme</span>
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem onClick={() => setTheme("light")}>
+                            Light
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => setTheme("dark")}>
+                            Dark
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => setTheme("system")}>
+                            System
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+
                       {/* Login Button */}
                       <LoginButton />
-                    </>
+                    </div>
                   )}
                 </div>
               </SheetContent>
@@ -121,40 +151,63 @@ const Navbar = () => {
               </Link>
             </Button>
           </div>
+
+          {/* Desktop Navigation */}
+          <ul className="ml-5 lg:flex hidden justify-center items-center gap-6 *:font-semibold text-opacity-70">
+            {navigationMenu}
+          </ul>
         </section>
 
-        {/* Desktop Navigation */}
-        <ul className="lg:flex hidden justify-center items-center gap-6 *:font-semibold text-opacity-70">
-          {navigationMenu}
-        </ul>
+        <div className="flex gap-6 items-center">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                Light
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                Dark
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>
+                System
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-        {status === "authenticated" ? (
-          <div className="flex gap-2 items-center">
-            <img
-              className="relative rounded-full w-12 h-12 border-4 border-amber-400"
-              src={session?.user?.image}
-              alt={session?.user?.name}
-              fetchPriority="high"
-              referrerPolicy="no-referrer"
-            />
+          {status === "authenticated" ? (
+            <div className="lg:flex hidden gap-2 items-center">
+              <img
+                className="relative rounded-full w-12 h-12 border-4 border-amber-400"
+                src={session?.user?.image}
+                alt={session?.user?.name}
+                fetchPriority="high"
+                referrerPolicy="no-referrer"
+              />
 
-            <p className="relative bottom-[16px] right-4 bg-green-500 rounded-full w-2 h-2"></p>
+              <p className="relative bottom-[16px] right-4 bg-green-500 rounded-full w-2 h-2"></p>
 
-            {/* Logout button */}
-            <button
-              onClick={() => signOut()}
-              className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 mr-4 items-center rounded-md"
-            >
-              <FaSignOutAlt className="text-xl" />{" "}
-              <span className="text-base">Log Out</span>
-            </button>
-          </div>
-        ) : (
-          <>
-            {/* Login Button */}
-            <LoginButton />
-          </>
-        )}
+              {/* Logout button */}
+              <button
+                onClick={() => signOut()}
+                className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 mr-4 items-center rounded-md"
+              >
+                <FaSignOutAlt className="text-xl" />{" "}
+                <span className="text-base">Log Out</span>
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Login Button */}
+              <LoginButton />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
