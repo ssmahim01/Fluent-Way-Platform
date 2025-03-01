@@ -38,7 +38,7 @@ const Navbar = () => {
                   <RiMenuFold2Fill className="text-2xl" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="pt-3 pb-8">
+              <SheetContent side="left" className="pt-3 pb-8 flex flex-col">
                 <div className="flex gap-1 items-center border-b border-neutral-200 shadow-sm px-5 pb-2">
                   <Image
                     src="/assets/fluent-way.webp"
@@ -60,6 +60,45 @@ const Navbar = () => {
                 <ul className="mt-5 px-5 flex flex-col space-y-4 text-lg font-semibold">
                   {navigationMenu}
                 </ul>
+
+                <div className="md:mt-24 mt-14 w-4/5 mx-auto">
+                  {status === "authenticated" ? (
+                    <>
+                      <div className="flex w-full md:flex-row flex-col md:gap-2 justify-between">
+                        <img
+                          className="rounded-full w-14 h-14 border-4 border-amber-400"
+                          src={session?.user?.image}
+                          alt={session?.user?.name}
+                          fetchPriority="high"
+                          referrerPolicy="no-referrer"
+                        />
+
+                        <div className="flex flex-col md:mt-0 mt-2">
+                          <h4 className="font-semibold text-lg">
+                            {session?.user?.name}
+                          </h4>
+                          <p className="text-sm">{session?.user?.email}</p>
+                        </div>
+                      </div>
+
+                      {/* Logout button */}
+                      <div className="mt-4">
+                      <button
+                        onClick={() => signOut()}
+                        className="text-white bg-rose-500 border-none py-2 px-5 font-bold flex gap-2 items-center rounded-md"
+                      >
+                        <FaSignOutAlt className="text-xl" />{" "}
+                        <span className="text-base">Log Out</span>
+                      </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Login Button */}
+                      <LoginButton />
+                    </>
+                  )}
+                </div>
               </SheetContent>
             </Sheet>
           </div>
@@ -92,12 +131,14 @@ const Navbar = () => {
         {status === "authenticated" ? (
           <div className="flex gap-2 items-center">
             <img
-              className="rounded-full w-12 h-12 border-4 border-amber-400"
+              className="relative rounded-full w-12 h-12 border-4 border-amber-400"
               src={session?.user?.image}
               alt={session?.user?.name}
               fetchPriority="high"
               referrerPolicy="no-referrer"
             />
+
+            <p className="relative bottom-[16px] right-4 bg-green-500 rounded-full w-2 h-2"></p>
 
             {/* Logout button */}
             <button
