@@ -138,7 +138,7 @@ export const ModalFooter = ({
 }) => {
   return (
     (<div
-      className={cn("flex justify-end p-4 dark:bg-neutral-900", className)}>
+      className={cn("flex justify-end p-4", className)}>
       {children}
     </div>)
   );

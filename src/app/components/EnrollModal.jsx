@@ -6,24 +6,24 @@ import {
   useModal,
 } from "@/components/ui/animated-modal";
 import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
-import { IoDocumentText, IoTimer } from "react-icons/io5";
+import { IoBook, IoDocumentText, IoTimer } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { MdCancel } from "react-icons/md";
+import { useState } from "react";
 
 export function EnrollModal({ course, session }) {
   const images = ["/assets/fluent-way.webp", `${course?.image}`];
+  const [number, setNumber] = useState("");
   const router = useRouter();
   const { setOpen } = useModal();
   const handleCancel = () => {
     setOpen(false);
   };
 
-  const handleBook = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const number = form.contactNumber.value;
+  const handleBook = async () => {
+   const name = session?.user?.name;
+   const email = session?.user?.email;
 
     const courseTitle = course?.title;
     const courseImage = course?.image;
@@ -80,7 +80,7 @@ export function EnrollModal({ course, session }) {
 
   return (
     <div className="overflow-y-scroll overflow-x-hidden flex flex-col">
-      <form onSubmit={handleBook} className="w-full space-y-3">
+      <div className="w-full space-y-3">
         <ModalContent>
           <h4 className="text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mt-2 mb-4">
             Book your course to{" "}
@@ -147,7 +147,7 @@ export function EnrollModal({ course, session }) {
                 name="name"
                 readOnly
                 defaultValue={session?.user?.name}
-                className="pl-2 text-neutral-600 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -161,7 +161,7 @@ export function EnrollModal({ course, session }) {
                 name="email"
                 readOnly
                 defaultValue={session?.user?.email}
-                className="pl-2 text-neutral-600 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -173,9 +173,10 @@ export function EnrollModal({ course, session }) {
               <input
                 type="number"
                 name="contactNumber"
+                onChange={(e) => setNumber(e.target.value)}
                 min={11}
                 placeholder="Provide your contact number"
-                className="pl-2 text-neutral-500 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -184,15 +185,17 @@ export function EnrollModal({ course, session }) {
         <ModalFooter className="pt-0 flex gap-4 justify-center items-center">
           <button
             onClick={handleCancel}
-            className="p-2 bg-neutral-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-base w-40 font-bold"
+            className="p-2 bg-neutral-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-base w-40 font-bold flex gap-1 justify-center items-center"
           >
-            Cancel
+            <MdCancel className="text-lg" />
+            <span className="text-base">Cancel</span>
           </button>
-          <button className="bg-black text-white dark:bg-white dark:text-black text-base p-2 rounded-md border border-black w-40 font-bold">
-            Book Now
+          <button type="submit" onClick={handleBook} className="bg-black text-white dark:bg-white dark:text-black p-2 rounded-md border border-black w-40 font-bold flex gap-2 justify-center items-center">
+          <IoBook className="text-xl" />
+          <span className="text-base">Book Now</span>
           </button>
         </ModalFooter>
-      </form>
+      </div>
     </div>
   );
 }

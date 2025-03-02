@@ -97,9 +97,9 @@ const AboutUsSection = () => {
           <div className="flex justify-center items-center space-x-8">
             <div className="text-center">
               <img
-                src="/assets/ss-mahim.jpeg"
-                alt="Reading of Students"
-                className="w-28 h-28 rounded-full object-cover border-4 border-neutral-800 mx-auto"
+                src="/assets/ss-mahim.png"
+                alt="Image of Developer"
+                className="w-40 h-40 rounded-full border-4 border-neutral-800 mx-auto"
               />
               <h3 className="font-semibold text-lg mt-4">Sayman Shakil Mahim</h3>
               <p className="font-medium">Founder & MERN Stack Developer</p>

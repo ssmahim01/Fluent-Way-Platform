@@ -12,17 +12,33 @@ export const GET = async (req, { params }) => {
 }
 
 export const PATCH = async (req, { params }) => {
-    const status = await req.json();
+    const { email } = await req.json();
+    if (!email) {
+        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
     const { id } = await params;
     const query = { _id: new ObjectId(id) };
-    const option = { upsert: true };
 
     const courseCollection = connectMongoDB("allCourses");
     const findCourse = await courseCollection.findOne(query);
-    const updateData = {
-        $inc: {likes: 1},
-        $set: {...status}
+
+    if (!findCourse) {
+        return NextResponse.json({ message: "Course not found" }, { status: 404 });
     }
+
+    const likedBy = findCourse?.likedBy || [];
+    const option = { upsert: true };
+    let updateData = {};
+
+    if (likedBy.includes(email)) {
+        // Unlike the course
+        updateData = { $pull: { likedBy: email }, $inc: { likes: -1 } }
+    } else {
+        // Like the course
+        updateData = { $push: { likedBy: email }, $inc: { likes: 1 } }
+    }
+
     const updateResult = await courseCollection.updateOne(query, updateData, option);
     revalidatePath(`/course/${findCourse?._id}`);
     return NextResponse.json(updateResult);

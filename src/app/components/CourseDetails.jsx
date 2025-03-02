@@ -11,33 +11,31 @@ import { useRouter } from "next/navigation";
 import { Modal, ModalBody, ModalTrigger } from "@/components/ui/animated-modal";
 import { EnrollModal } from "./EnrollModal";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 const CourseDetails = ({ course }) => {
-  const {data:session} = useSession();
+  const { data: session } = useSession();
+  const [liked, setLiked] = useState(course?.likedBy?.includes(session?.user?.email));
 
   const router = useRouter();
   const handleUpdateLike = async (id) => {
     // console.log(id);
-
-    const likeStatus = {
-      status: "Liked",
-    };
-    const response = await fetch(
-      `http://localhost:3000/api/course/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(likeStatus),
-      }
-    );
+    const response = await fetch(`http://localhost:3000/api/course/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: session?.user?.email }),
+    });
 
     if (response.ok) {
+      setLiked(!liked);
       router.refresh();
       Swal.fire({
-        title: "Successful!",
-        text: "You have liked this course.",
+        title: `${liked? "Removed like" : "Liked!"}`,
+        text: `${liked
+          ? "You removed your like."
+          : "You have liked this course."}`,
         icon: "success",
         timer: 2500,
         showConfirmButton: false,
@@ -51,7 +49,7 @@ const CourseDetails = ({ course }) => {
         subTitle={`Explore the details of ${course?.title} and discover how it can enhance your skills. Enroll to begin your learning journey today!`}
       />
 
-      <div className="lg:w-4/5 w-11/12 mx-auto rounded-lg flex flex-col lg:flex-row justify-between items-center lg:gap-8 gap-4 p-4 shadow-md border border-neutral-200">
+      <div className="lg:w-4/5 w-11/12 mx-auto rounded-lg flex flex-col lg:flex-row justify-between items-center lg:gap-8 gap-4 p-4 shadow-md border border-neutral-200 dark:border-neutral-700 dark:shadow-xl">
         <figure className="lg:w-1/2 w-full lg:h-96 md:h-80 h-64">
           <img
             className="w-full h-full rounded-md object-cover"
@@ -85,7 +83,7 @@ const CourseDetails = ({ course }) => {
               starSpacing="2px"
             />
 
-            <button className="text-sm py-2 px-3 bg-gray-100 hover:cursor-pointer rounded-full font-semibold">
+            <button className="text-sm py-2 px-3 bg-neutral-200 dark:bg-neutral-700 hover:cursor-pointer rounded-full font-semibold">
               {course?.rating}
             </button>
           </div>
@@ -110,15 +108,14 @@ const CourseDetails = ({ course }) => {
 
           <div className="pt-3 flex justify-between items-center">
             <button
-              type="submit"
+              type="button"
               onClick={() => handleUpdateLike(course?._id)}
-              className="hover:bg-zinc-100 rounded-md p-2"
-              disabled={course?.status === "Liked"}
+              className="hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-md p-2 cursor-pointer"
             >
-              {course?.status !== "Liked" ? (
-                <BiLike className="text-2xl" />
+              {liked ? (
+                <BiSolidLike className="text-3xl text-indigo-600" />
               ) : (
-                <BiSolidLike className="text-2xl" />
+                <BiLike className="text-3xl" />
               )}
             </button>
 

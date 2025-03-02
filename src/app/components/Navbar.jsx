@@ -36,7 +36,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-neutral-100 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800">
+    <div className="w-full fixed z-20 py-2 lg:px-12 md:px-8 px-4 shadow-sm border-b border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800">
       <div className="flex justify-between items-center">
         <section className="flex gap-2 items-center">
           {/* Menu Toggle */}
@@ -70,7 +70,7 @@ const Navbar = () => {
                   {navigationMenu}
                 </ul>
 
-                <div className="md:mt-24 mt-14 w-4/5 mx-auto">
+                <div className="md:mt-28 mt-16 w-4/5 mx-auto">
                   {status === "authenticated" ? (
                     <>
                       <div className="flex w-full md:flex-row flex-col md:gap-2 justify-between">
@@ -86,7 +86,7 @@ const Navbar = () => {
                           <h4 className="font-semibold text-lg">
                             {session?.user?.name}
                           </h4>
-                          <p className="text-sm">{session?.user?.email}</p>
+                          <p className="md:text-sm text-xs md:pr-0 pr-4">{session?.user?.email}</p>
                         </div>
                       </div>
 
@@ -102,7 +102,7 @@ const Navbar = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="flex gap-3 md:mt-24 mt-28 w-full justify-between items-center">
+                    <div className="flex gap-3 md:mt-28 mt-40 w-full justify-between items-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" size="icon">
@@ -190,7 +190,7 @@ const Navbar = () => {
                 referrerPolicy="no-referrer"
               />
 
-              <p className="relative bottom-[16px] right-4 bg-green-500 rounded-full w-2 h-2"></p>
+              <p className="relative bottom-[17px] right-[18px] bg-green-500 rounded-full w-[10px] h-[10px]"></p>
 
               {/* Logout button */}
               <button

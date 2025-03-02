@@ -52,7 +52,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-zinc-200 shadow-md">
+    <footer className="border-t border-neutral-200 dark:border-neutral-700 shadow-md dark:shadow-lg bg-neutral-100 dark:bg-neutral-800">
       <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 md:pb-14 p-5 gap-5">
         <div className="md:w-1/2 pt-8">
           <div className="flex flex-col gap-4">
@@ -82,10 +82,10 @@ const Footer = () => {
 
             <div className="flex gap-4 items-center *:cursor-pointer">
               <Link href="https://www.facebook.com/ssmahim" target="_blank">
-                <FaFacebook className="text-cyan-600 w-10 h-10" />
+                <FaFacebook className="text-cyan-500 w-10 h-10" />
               </Link>
               <Link href="https://github.com/ssmahim01" target="_blank">
-                <SiGithub className="text-zinc-800 w-10 h-10" />
+                <SiGithub className="text-neutral-800 dark:text-neutral-300 w-10 h-10" />
               </Link>
               <Link href="https://www.instagram.com/iammz01" target="_blank">
                 <FaInstagram className="text-rose-500 w-10 h-10" />
@@ -94,7 +94,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/sayman-shakil-mahim"
                 target="_blank"
               >
-                <FaLinkedin className="text-indigo-600 w-10 h-10" />
+                <FaLinkedin className="text-indigo-500 w-10 h-10" />
               </Link>
             </div>
 
@@ -164,7 +164,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pb-2 px-4 text-white bg-zinc-800">
+      <div className="pb-2 px-4 text-white bg-neutral-900">
         <p className="font-medium text-center pt-3">
           Copyright © {currentYear} - All Rights Reserved By{" "}
           <span className="font-bold">Fluent</span>

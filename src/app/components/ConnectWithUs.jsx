@@ -3,7 +3,7 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import { ImWhatsapp } from "react-icons/im";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdOutlineMessage } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 
 const ConnectWithUs = () => {
@@ -44,8 +44,8 @@ const ConnectWithUs = () => {
         Connect with Us
       </h2>
 
-      <div className="w-11/12 mx-auto flex lg:flex-row flex-col justify-between border border-neutral-200 shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 rounded-lg">
-        <div className="lg:w-1/2 p-4 lg:border-r border-r-neutral-300 lg:mr-6 lg:border-b-0 border-b">
+      <div className="w-11/12 mx-auto flex lg:flex-row flex-col justify-between border border-neutral-200 dark:border-neutral-600 shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 rounded-lg">
+        <div className="lg:w-1/2 p-4 lg:border-r border-r-neutral-300 dark:border-r-neutral-600 lg:mr-6 lg:border-b-0 border-b">
           <figure className="w-full md:h-[295px] h-64">
             <img
               className="w-full h-full object-cover rounded-xl"
@@ -98,7 +98,10 @@ const ConnectWithUs = () => {
 
             <div className="mt-6">
               <Button variant="default">
-                <span className="font-bold">Send Message</span>
+                <p className="flex gap-2 items-center">
+                <MdOutlineMessage className="text-2xl" />
+                <span className="text-base font-bold">Send Message</span>
+                </p>
               </Button>
             </div>
           </form>
