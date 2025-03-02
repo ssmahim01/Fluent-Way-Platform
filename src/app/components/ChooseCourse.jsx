@@ -3,9 +3,9 @@ import CoursesCard from "./CoursesCard";
 import Heading from "./Heading";
 
 export const fetchCoursesFromDB = async () => {
-  const response = await fetch("http://localhost:3000/api/courses");
+  const response = await fetch("http://localhost:3000/api/top-courses");
   const data = await response.json();
-  return data.slice(0, 6);
+  return data;
 };
 
 const ChooseCourse = async () => {

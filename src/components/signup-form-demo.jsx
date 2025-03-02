@@ -94,7 +94,7 @@ export default function SignupForm() {
             <BottomGradient />
           </button>
 
-          <p className="pt-4 text-neutral-700 font-semibold text-center px-4">
+          <p className="pt-4 text-neutral-700 dark:text-neutral-400 font-semibold text-center px-4">
             Already have an account, Please{" "}
             <Link href="/authentication/login">
               <span className="text-indigo-600 font-bold">Login</span>

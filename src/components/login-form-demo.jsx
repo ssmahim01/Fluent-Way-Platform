@@ -56,7 +56,7 @@ export default function LoginForm() {
         <GoogleLogin />
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
         
-        <p className="pt-0 pb-4 text-neutral-700 font-semibold text-center px-4">
+        <p className="pt-0 pb-4 text-neutral-700 dark:text-neutral-400 font-semibold text-center px-4">
           Do not have any account, Please{" "}
           <Link href="/authentication/register">
             <span className="text-indigo-500 font-bold">Register</span>
@@ -64,7 +64,7 @@ export default function LoginForm() {
         </p>
 
         <div className="flex gap-2 items-center pt-0 pb-3 w-11/12 mx-auto">
-         <div className="border border-neutral-300 w-1/4" /> <p className="md:w-[44%] w-1/2 text-neutral-500 font-semibold text-sm">Or Login With Email</p> <div className="border border-neutral-300 w-1/4" />
+         <div className="border border-neutral-300 w-1/4" /> <p className="md:w-[44%] w-1/2 text-neutral-500 dark:text-neutral-400 font-semibold text-sm">Or Login With Email</p> <div className="border border-neutral-300 w-1/4" />
         </div>
         <form onSubmit={handleLogin}>
           <LabelInputContainer className="mb-4">

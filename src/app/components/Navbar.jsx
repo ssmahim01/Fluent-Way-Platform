@@ -70,7 +70,7 @@ const Navbar = () => {
                   {navigationMenu}
                 </ul>
 
-                <div className="md:mt-28 mt-16 w-4/5 mx-auto">
+                <div className="md:mt-32 mt-28 w-4/5 mx-auto">
                   {status === "authenticated" ? (
                     <>
                       <div className="flex w-full md:flex-row flex-col md:gap-2 justify-between">
@@ -102,7 +102,7 @@ const Navbar = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="flex gap-3 md:mt-28 mt-40 w-full justify-between items-center">
+                    <div className="flex gap-3 md:mt-28 mt-48 w-full justify-between items-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" size="icon">
