@@ -72,7 +72,7 @@ const ManageBookingTable = ({ bookingData }) => {
       <h1 className="text-center font-bold text-3xl mb-3">
         My Booking Courses
       </h1>
-      <div className="md:w-11/12 w-full mx-auto overflow-x-auto">
+      <div className="lg:w-11/12 w-full mx-auto overflow-x-auto">
         <Table>
           <TableCaption>A list of your recent booked of courses.</TableCaption>
           <TableHeader>
@@ -104,7 +104,7 @@ const ManageBookingTable = ({ bookingData }) => {
                 <TableCell>{booking?.courseDuration}</TableCell>
                 <TableCell>{booking?.number}</TableCell>
                 <TableCell>
-                  <div className={`md:w-11/12 w-full py-[2px] mx-auto rounded-full text-white font-bold ${booking?.status === "In-Progress" && "bg-amber-500"} ${booking?.status === "Cancel" && "bg-rose-500"} ${booking?.status === "Done" && "bg-green-600"}`}>
+                  <div className={`lg:w-11/12 w-full py-[2px] mx-auto rounded-full text-white font-bold ${booking?.status === "In-Progress" && "bg-amber-500"} ${booking?.status === "Cancel" && "bg-rose-500"} ${booking?.status === "Done" && "bg-green-600"}`}>
                     <p className="text-center w-full px-3">{booking?.status === "In-Progress" && "Pending"} {booking?.status === "Cancel" && "Canceled"} {booking?.status === "Done" && "Done"}</p>
                   </div>
                 </TableCell>

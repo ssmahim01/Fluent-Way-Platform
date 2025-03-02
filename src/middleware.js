@@ -18,6 +18,7 @@ export const middleware = async (req) => {
 
 export const config = {
     matcher: [
-        "/course/:path*"
+        "/course/:path*",
+        "/booked-courses"
     ],
 }

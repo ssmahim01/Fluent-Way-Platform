@@ -9,6 +9,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoDocumentText, IoTimer } from "react-icons/io5";
+import { MdCancel } from "react-icons/md";
+import { HiOutlineSaveAs } from "react-icons/hi";
 import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
 import Swal from "sweetalert2";
 
@@ -28,7 +30,7 @@ const EditBooking = ({ booking }) => {
     try {
       const editInfo = {
         number,
-        status
+        status,
       };
 
       const response = await fetch(
@@ -36,7 +38,7 @@ const EditBooking = ({ booking }) => {
         {
           method: "PATCH",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(editInfo),
         }
@@ -136,7 +138,7 @@ const EditBooking = ({ booking }) => {
                 name="name"
                 readOnly
                 defaultValue={session?.user?.name}
-                className="pl-2 text-neutral-600 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 text-neutral-600 dark:text-neutral-300 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -150,7 +152,7 @@ const EditBooking = ({ booking }) => {
                 name="email"
                 readOnly
                 defaultValue={session?.user?.email}
-                className="pl-2 text-neutral-600 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 text-neutral-600 dark:text-neutral-300 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -166,7 +168,7 @@ const EditBooking = ({ booking }) => {
                 onChange={(e) => setNumber(e.target.value)}
                 min={11}
                 placeholder="Provide your contact number"
-                className="pl-2 text-neutral-500 font-semibold py-2 w-full rounded-md border border-neutral-400"
+                className="pl-2 text-neutral-500 dark:text-neutral-300 font-semibold py-2 w-full rounded-md border border-neutral-400"
                 required
               />
             </div>
@@ -179,7 +181,7 @@ const EditBooking = ({ booking }) => {
                 defaultValue={booking?.status}
                 name="status"
                 onChange={(e) => setStatus(e.target.value)}
-                className="py-3 pl-2 rounded-md cursor-pointer border border-neutral-300 focus:border-2 focus:border-indigo-500 text-neutral-500 w-full max-w-md *:font-semibold"
+                className="py-3 pl-2 rounded-md cursor-pointer border border-neutral-300 focus:border-2 focus:border-indigo-500 text-neutral-500 dark:text-neutral-300 w-full max-w-md *:font-semibold"
               >
                 <option disabled>Change Status</option>
                 <option value="Cancel">Cancel</option>
@@ -192,16 +194,18 @@ const EditBooking = ({ booking }) => {
         <ModalFooter className="pt-0 flex gap-4 justify-center items-center">
           <button
             onClick={handleCancel}
-            className="p-2 bg-neutral-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-base w-40 font-bold"
+            className="p-2 bg-neutral-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-base w-40 font-bold flex gap-1 justify-center items-center"
           >
-            Cancel
+            <MdCancel className="text-lg" />
+            <span className="text-base">Cancel</span>
           </button>
           <button
             type="submit"
             onClick={handleEdit}
-            className="bg-black text-white dark:bg-white dark:text-black text-base p-2 rounded-md border border-black w-40 font-bold"
+            className="bg-black text-white dark:bg-white dark:text-black p-2 rounded-md border border-black w-44 font-bold flex gap-2 justify-center items-center"
           >
-            Edit Booking
+            <span className="text-base">Save Changes</span>
+            <HiOutlineSaveAs className="text-xl" />
           </button>
         </ModalFooter>
       </div>
