@@ -32,7 +32,9 @@ const Hero = () => {
           </figure>
 
           <figure className="md:hidden block mt-3 mb-5">
-            <img
+            <motion.img
+             animate={{ y: [0, 25, 0] }}
+             transition={{ duration: 6, repeat: Infinity }}
             fetchPriority="high"
               className="w-full border-r-8 border-t-8 border-violet-600 rounded-lg"
               src="/assets/studying-together.jpg"
@@ -41,8 +43,10 @@ const Hero = () => {
           </figure>
 
           <figure className="md:hidden block">
-            <img
+            <motion.img
             fetchPriority="high"
+            animate={{ y: [-30, 0, -30] }}
+            transition={{ duration: 6, repeat: Infinity }}
               className="w-full border-l-8 border-b-8 border-neutral-700 rounded-lg"
               src="/assets/students-work.jpg"
               alt="Students are learning"

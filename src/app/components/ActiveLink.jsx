@@ -12,7 +12,7 @@ export default function ActiveLink({ href, children }) {
     <Link
       href={href}
       className={`px-2 py-0 rounded ${
-        isActive ? "border-b-4 border-indigo-600 text-indigo-600 font-bold" : "text-neutral-700 dark:text-neutral-200"
+        isActive ? "border-b-4 border-indigo-600 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 font-bold" : "text-neutral-700 dark:text-neutral-200"
       }`}
     >
       {children}

@@ -1,6 +1,7 @@
 import CourseDetails from "@/app/components/CourseDetails";
-import connectMongoDB from "@/lib/connectMongoDB";
-import { ObjectId } from "mongodb";
+import { headers } from "next/headers";
+// import connectMongoDB from "@/lib/connectMongoDB";
+// import { ObjectId } from "mongodb";
 
 export const metadata = {
   title: "FluentWay | Course Details",
@@ -9,7 +10,9 @@ export const metadata = {
 
 export default async function Course({ params }) {
   const { id } = await params;
-  const response = await fetch(`http://localhost:3000/api/course/${id}`);
+  const response = await fetch(`http://localhost:3000/api/course/${id}`, {
+    headers: new Headers(await headers())
+});
   const course = await response.json();
 
   // const query = { _id: new ObjectId(id) };
