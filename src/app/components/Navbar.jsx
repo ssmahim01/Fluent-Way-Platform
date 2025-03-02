@@ -26,7 +26,7 @@ const Navbar = () => {
   const navigationMenu = (
     <>
       <ActiveLink href="/">Home</ActiveLink>
-      <ActiveLink href="/all-courses">All Courses</ActiveLink>
+      <ActiveLink href="/all-courses">Available Courses</ActiveLink>
       {session?.user && (
         <ActiveLink href="/booked-courses">Booked Courses</ActiveLink>
       )}
@@ -153,7 +153,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <ul className="ml-5 lg:flex hidden justify-center items-center gap-6 *:font-semibold text-opacity-70">
+          <ul className="ml-5 lg:flex hidden justify-center items-center gap-4 *:font-semibold text-opacity-70">
             {navigationMenu}
           </ul>
         </section>

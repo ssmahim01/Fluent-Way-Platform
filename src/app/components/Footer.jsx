@@ -74,7 +74,7 @@ const Footer = () => {
               </Button>
             </div>
 
-            <p className="lg:text-base font-medium text-sm">
+            <p className="lg:text-base text-neutral-600 dark:text-neutral-300 font-medium text-sm">
               We strive to provide high-quality language courses. Users can
               enroll in their desired course and contact us directly with any
               questions.
@@ -118,49 +118,19 @@ const Footer = () => {
           </div>
         </div>
         <div className="md:w-2/5 w-full md:pt-14 pt-5 md:pb-0 pb-5">
-          <h2 className="lg:text-4xl text-3xl md:text-left text-center font-bold pb-5">
-            Connect with Us
-          </h2>
+        <div className="flex flex-col gap-1 mb-4">
+        <h2 className="md:text-3xl text-2xl font-bold">Improve Your Fluency</h2>
+        <p className="lg:text-base text-neutral-600 dark:text-neutral-300 text-sm font-medium">Watch this exclusive video & learn!</p>
+        </div>
 
-          <form className="space-y-3" ref={form} onSubmit={handleSendMessage}>
-            <div>
-              <input
-                type="text"
-                name="from_name"
-                placeholder="Name"
-                className="w-full shadow-violet-200 shadow-sm border border-violet-100 py-3 pl-4 rounded-md"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                type="email"
-                name="from_email"
-                placeholder="Email"
-                className="pl-4 w-full py-3 shadow-violet-200 shadow-sm border border-violet-100 rounded-md"
-                required
-              />
-            </div>
-
-            <div className="pb-2">
-              <textarea
-                name="message"
-                placeholder="Message"
-                className="w-full h-32 shadow-violet-200 shadow-sm border border-violet-100 pt-2 pb-20 pl-4 rounded-md"
-              ></textarea>
-            </div>
-
-            <div>
-              <Button
-                type="submit"
-                variant="default"
-                className="flex gap-2 items-center text-base font-bold px-6"
-              >
-                <FaMessage /> <span>Send Message</span>
-              </Button>
-            </div>
-          </form>
+          <iframe
+            src="https://www.youtube.com/embed/WZiYlv5cjr0?si=nnO6sQHob7L6qAZY"
+            className="w-full h-60 rounded-lg"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen={true}
+          ></iframe>
         </div>
       </div>
 

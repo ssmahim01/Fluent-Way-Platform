@@ -1,8 +1,9 @@
 "use client";
+
 const AboutUsSection = () => {
   return (
-    <div className="pt-16 pb-10">
-      <section className="bg-neutral-800 border-b border-neutral-600 dark:border-neutral-800 shadow-md px-6 text-white py-16 text-center">
+    <div className="pt-14 pb-10">
+      <section className="bg-neutral-800 dark:bg-neutral-700 border-b border-neutral-600 dark:border-neutral-800 shadow-md px-6 text-white py-16 text-center">
         <h1 className="text-4xl font-bold">About FluentWay</h1>
         <p className="mt-4 font-medium">
           Empowering learners to achieve English fluency with our expert-led
@@ -13,7 +14,7 @@ const AboutUsSection = () => {
       <section className="py-8 px-4 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-semibold text-indigo-600 mb-4">
+            <h2 className="text-3xl font-semibold text-indigo-600 dark:text-amber-500 mb-4">
               Our Mission
             </h2>
             <p className="font-medium">
@@ -25,7 +26,7 @@ const AboutUsSection = () => {
             </p>
           </div>
           <div>
-            <h2 className="text-3xl font-semibold text-indigo-600 mb-4">
+            <h2 className="text-3xl font-semibold text-indigo-600 dark:text-amber-500 mb-4">
               Our Vision
             </h2>
             <p className="font-medium">
@@ -39,7 +40,7 @@ const AboutUsSection = () => {
 
       <section className="py-8 px-6 bg-neutral-50 dark:bg-neutral-800">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-semibold text-indigo-600 mb-4 text-center">
+          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-amber-500 mb-4 text-center">
             How FluentWay Works
           </h2>
           <p className="font-medium text-center mb-6">
@@ -52,28 +53,29 @@ const AboutUsSection = () => {
 
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
             <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-indigo-600">
+              <h3 className="text-xl font-semibold text-indigo-600 dark:text-amber-500">
                 Explore Courses
               </h3>
-              <p className="mt-4 font-medium">
+
+              <p className="mt-2 font-medium">
                 Browse through various English learning courses and choose the
                 one that fits your needs.
               </p>
             </div>
             <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-indigo-600">
+              <h3 className="text-xl font-semibold text-indigo-600 dark:text-amber-500">
                 Track Your Progress
               </h3>
-              <p className="mt-4 font-medium">
+              <p className="mt-2 font-medium">
                 Keep track of your learning journey with progress updates and
                 personalized feedback.
               </p>
             </div>
             <div className="text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold text-indigo-600">
+              <h3 className="text-xl font-semibold text-indigo-600 dark:text-amber-500">
                 Manage Your Bookings
               </h3>
-              <p className="mt-4 font-medium">
+              <p className="mt-2 font-medium">
                 Easily edit, delete, or update your course bookings and learning
                 status on the platform.
               </p>
@@ -84,7 +86,7 @@ const AboutUsSection = () => {
 
       <section className="py-8 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold text-indigo-600 mb-4">
+          <h2 className="text-3xl font-semibold text-indigo-600 dark:text-amber-500 mb-4">
             Meet Our Team
           </h2>
           <p className="font-medium mb-6">
@@ -99,7 +101,7 @@ const AboutUsSection = () => {
               <img
                 src="/assets/ss-mahim.jpeg"
                 alt="Image of Developer"
-                className="w-20 h-20 rounded-full object-cover border-4 border-neutral-800 mx-auto"
+                className="w-20 h-20 rounded-full object-cover border-4 border-neutral-800 dark:border-amber-500 mx-auto"
               />
               <h3 className="font-semibold text-lg mt-4">Sayman Shakil Mahim</h3>
               <p className="font-medium">Founder & MERN Stack Developer</p>
