@@ -13,7 +13,7 @@ const Table = React.forwardRef(({ className, ...props }, ref) => (
 Table.displayName = "Table"
 
 const TableHeader = React.forwardRef(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:border border-collapse bg-neutral-800 dark:bg-neutral-700", className)} {...props} />
+  <thead ref={ref} className={cn("[&_tr]:border border-collapse bg-neutral-800 dark:bg-neutral-900", className)} {...props} />
 ))
 TableHeader.displayName = "TableHeader"
 
@@ -28,7 +28,7 @@ TableBody.displayName = "TableBody"
 const TableFooter = React.forwardRef(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
-    className={cn("border bg-muted/50 font-medium [&>tr]:last:border-b-0", className)}
+    className={cn("border bg-muted/20 font-medium [&>tr]:last:border-b-0", className)}
     {...props} />
 ))
 TableFooter.displayName = "TableFooter"

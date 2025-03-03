@@ -1,58 +1,22 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiGithub } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
-import { FaLocationDot, FaMessage } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
 import { IoMdCall } from "react-icons/io";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const Footer = () => {
-  const form = useRef();
   const [currentYear, setCurrentYear] = useState("");
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        process.env.SERVICE_ID,
-        process.env.TEMPLATE_ID,
-        form.current,
-        process.env.PUBLIC_KEY
-      )
-      .then((result) => {
-        console.log(result.text);
-        e.target.reset();
-
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Message sent successfully!",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-      })
-      .catch((error) => {
-        // console.log(error.text);
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Failed to send the message! Please try again later.",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-      });
-  };
-
   return (
-    <footer className="border-t border-neutral-200 dark:border-neutral-700 shadow-md dark:shadow-lg bg-neutral-100 dark:bg-neutral-800">
+    <footer className="border-t border-neutral-200 dark:border-neutral-700 shadow-md dark:shadow-lg bg-neutral-100 dark:bg-neutral-900">
       <div className="lg:w-4/5 w-11/12 mx-auto flex md:flex-row flex-col justify-between items-center lg:px-14 md:pb-14 p-5 gap-5">
         <div className="md:w-1/2 pt-8">
           <div className="flex flex-col gap-4">
@@ -134,7 +98,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pb-2 px-4 text-white bg-neutral-900">
+      <div className="pb-3 px-4 text-white bg-neutral-900 dark:bg-black">
         <p className="font-medium text-center pt-3">
           Copyright © {currentYear} - All Rights Reserved By{" "}
           <span className="font-bold">Fluent</span>

@@ -3,7 +3,7 @@
 const AboutUsSection = () => {
   return (
     <div className="pt-14 pb-10">
-      <section className="bg-neutral-800 dark:bg-neutral-700 border-b border-neutral-600 dark:border-neutral-800 shadow-md px-6 text-white py-16 text-center">
+      <section className="bg-neutral-800 dark:bg-neutral-900 border-b border-neutral-600 dark:border-neutral-800 shadow-md px-6 text-white py-16 text-center">
         <h1 className="text-4xl font-bold">About FluentWay</h1>
         <p className="mt-4 font-medium">
           Empowering learners to achieve English fluency with our expert-led
@@ -38,7 +38,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="py-8 px-6 bg-neutral-50 dark:bg-neutral-800">
+      <section className="py-8 px-6 bg-neutral-50 dark:bg-neutral-900">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-semibold text-indigo-600 dark:text-amber-500 mb-4 text-center">
             How FluentWay Works

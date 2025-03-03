@@ -40,7 +40,7 @@ const ConnectWithUs = () => {
   };
 
   return (
-    <div className="pt-20 pb-10">
+    <div className="pt-20 pb-16">
       <Heading title={"Connect With Us"} subTitle={"Send your valuable message by your name and email"} />
 
       <div className="lg:pt-0 pt-4 w-11/12 mx-auto flex lg:flex-row-reverse flex-col justify-between border border-neutral-200 dark:border-neutral-600 shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 rounded-lg">
