@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <div className="shadow-sm dark:shadow-lg pb-3 mb-10">
+    <div className="bg-neutral-200 dark:bg-neutral-900 shadow-sm dark:shadow-lg pb-3 mb-10">
       <div className="flex lg:flex-row-reverse flex-col lg:w-4/5 w-11/12 mx-auto py-3 justify-between items-center lg:gap-14">
         <div className="flex-1">
           <figure className="md:block hidden">

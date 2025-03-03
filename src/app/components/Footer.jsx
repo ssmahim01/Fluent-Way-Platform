@@ -83,7 +83,7 @@ const Footer = () => {
         </div>
         <div className="md:w-2/5 w-full md:pt-14 pt-5 md:pb-0 pb-5">
         <div className="flex flex-col gap-1 mb-4">
-        <h2 className="md:text-3xl text-2xl font-bold">Improve Your Fluency</h2>
+        <h2 className="lg:text-3xl text-2xl font-bold">Improve Your Fluency</h2>
         <p className="lg:text-base text-neutral-600 dark:text-neutral-300 text-sm font-medium">Watch this exclusive video & learn!</p>
         </div>
 
