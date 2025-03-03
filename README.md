@@ -18,7 +18,7 @@
 - **User-Friendly Interface** – A seamless and intuitive platform built with Next.js for optimal performance.  
 - **Course Management System** – Users can explore, enroll, and manage their course bookings with ease.  
 - **Progress Tracking** – Allows students to update their learning status and track their progress.  
-- **Secure Authentication** – Integrates Firebase Authentication for user sign-up and login.  
+- **Secure Authentication** – Integrates Next Auth for user registration and login.  
 - **Responsive Design** – Ensures accessibility across different devices, enhancing the learning experience.
 
 ---
