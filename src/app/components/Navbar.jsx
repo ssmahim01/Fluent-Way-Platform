@@ -47,7 +47,7 @@ const Navbar = () => {
                   <RiMenuFold2Fill className="text-2xl" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="pt-3 pb-8 flex flex-col">
+              <SheetContent side="left" className="pt-3 pb-4 flex flex-col">
                 <div className="flex gap-1 items-center border-b border-neutral-200 dark:border-neutral-700 shadow-sm px-5 pb-2">
                   <Image
                     src="/assets/fluent-way.webp"
@@ -66,11 +66,11 @@ const Navbar = () => {
                   </Button>
                 </div>
 
-                <ul className="mt-5 px-5 flex flex-col space-y-4 text-lg font-semibold">
+                <ul className="mt-6 px-5 flex flex-col space-y-6 text-base font-semibold">
                   {navigationMenu}
                 </ul>
 
-                <div className="md:mt-32 mt-28 w-4/5 mx-auto">
+                <div className="mt-60 w-4/5 mx-auto">
                   {status === "authenticated" ? (
                     <>
                       <div className="flex w-full md:flex-row flex-col md:gap-2 justify-between">
@@ -102,7 +102,7 @@ const Navbar = () => {
                       </div>
                     </>
                   ) : (
-                    <div className="flex gap-3 md:mt-28 mt-48 w-full justify-between items-center">
+                    <div className="flex gap-3 w-full justify-between items-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" size="icon">
