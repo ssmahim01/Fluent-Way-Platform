@@ -37,7 +37,7 @@ const ManageBookingTable = ({ bookingData }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await fetch(
-            `http://localhost:3000/api/booked-course/${id}`,
+            `https://fluent-way.vercel.app/api/booked-course/${id}`,
             {
               method: "DELETE",
             }

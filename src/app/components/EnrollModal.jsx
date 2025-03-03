@@ -44,7 +44,7 @@ export function EnrollModal({ course, session }) {
       // console.table(bookInfo);
 
       const response = await fetch(
-        "http://localhost:3000/api/booked-course",
+        "https://fluent-way.vercel.app/api/booked-course",
         {
           method: "POST",
           headers: {

@@ -13,7 +13,7 @@ export default function SignupForm() {
   const router = useRouter();
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Sign up form submitted");
+    // console.log("Sign up form submitted");
     const form = e.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
     const email = form.email.value;

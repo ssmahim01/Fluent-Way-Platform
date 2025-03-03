@@ -5,7 +5,7 @@ import Heading from "./Heading";
 
 export const fetchCoursesFromDB = async () => {
   const response = await fetch(
-    "http://localhost:3000/api/top-courses",
+    "https://fluent-way.vercel.app/api/top-courses",
     {
       headers: new Headers(await headers()),
     }

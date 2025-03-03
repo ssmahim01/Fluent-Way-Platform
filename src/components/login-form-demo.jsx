@@ -12,7 +12,7 @@ export default function LoginForm() {
   const router = useRouter();
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Login form submitted");
+    // console.log("Login form submitted");
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;

@@ -20,7 +20,7 @@ const CourseDetails = ({ course }) => {
   const router = useRouter();
   const handleUpdateLike = async (id) => {
     // console.log(id);
-    const response = await fetch(`http://localhost:3000/api/course/${id}`, {
+    const response = await fetch(`https://fluent-way.vercel.app/api/course/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

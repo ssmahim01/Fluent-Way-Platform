@@ -8,7 +8,7 @@ export const metadata = {
 
 const fetchBookedCoursesFromDB = async () => {
   const response = await fetch(
-    "http://localhost:3000/api/booked-course",{
+    "https://fluent-way.vercel.app/api/booked-course",{
         headers: new Headers(await headers())
     }
   );

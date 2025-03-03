@@ -34,7 +34,7 @@ const EditBooking = ({ booking }) => {
       };
 
       const response = await fetch(
-        `http://localhost:3000/api/booked-course/${booking?._id}`,
+        `https://fluent-way.vercel.app/api/booked-course/${booking?._id}`,
         {
           method: "PATCH",
           headers: {
