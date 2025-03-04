@@ -1,43 +1,13 @@
 "use client";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
-import Swal from "sweetalert2";
 import { ImWhatsapp } from "react-icons/im";
 import { MdEmail, MdOutlineMessage } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import Heading from "./Heading";
+import { handleSend } from "../util/handleSend";
 
 const ConnectWithUs = () => {
   const form = useRef();
-  
-  const handleSend = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        `${process.env.SERVICE_ID}`,
-        `${process.env.TEMPLATE_ID}`,
-        form.current,
-        `${process.env.PUBLIC_KEY}`
-      )
-      .then((result) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Successfully sent the mail!",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-      })
-      .catch((error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Failed to send the mail! Please try again later.",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-      });
-  };
 
   return (
     <div className="pt-20 pb-16">
@@ -70,7 +40,7 @@ const ConnectWithUs = () => {
         </div>
 
         <div className="lg:w-1/2">
-          <form ref={form} onSubmit={handleSend} className="space-y-4 p-7">
+          <form ref={form} onSubmit={(e) => handleSend(e, form)} className="space-y-4 p-7">
             <h2 className="text-3xl font-extrabold pb-2">Send Your Message</h2>
 
             <input

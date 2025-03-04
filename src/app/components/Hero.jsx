@@ -11,7 +11,6 @@ const Hero = () => {
         <div className="flex-1">
           <figure className="md:block hidden">
             <motion.img
-            fetchPriority="high"
               animate={{ y: [20, 40, 20] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-r-8 border-t-8 border-violet-600 rounded-lg"
@@ -22,7 +21,6 @@ const Hero = () => {
 
           <figure className="md:block hidden">
             <motion.img
-            fetchPriority="high"
               animate={{ x: [30, 80, 30] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-l-8 border-b-8 border-neutral-700 rounded-lg"
@@ -35,7 +33,6 @@ const Hero = () => {
             <motion.img
              animate={{ y: [0, 25, 0] }}
              transition={{ duration: 6, repeat: Infinity }}
-            fetchPriority="high"
               className="w-full border-r-8 border-t-8 border-violet-600 rounded-lg"
               src="/assets/studying-together.jpg"
               alt="Students are studying together"
@@ -44,7 +41,6 @@ const Hero = () => {
 
           <figure className="md:hidden block">
             <motion.img
-            fetchPriority="high"
             animate={{ y: [-30, 0, -30] }}
             transition={{ duration: 6, repeat: Infinity }}
               className="w-full border-l-8 border-b-8 border-neutral-700 rounded-lg"
