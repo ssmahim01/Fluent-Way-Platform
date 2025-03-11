@@ -1,8 +1,8 @@
-"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { motion } from "motion/react"
 import { FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -10,43 +10,53 @@ const Hero = () => {
       <div className="flex lg:flex-row-reverse flex-col lg:w-4/5 w-11/12 mx-auto py-3 justify-between items-center lg:gap-14">
         <div className="flex-1">
           <figure className="md:block hidden">
-            <motion.img
-              animate={{ y: [20, 40, 20] }}
-              transition={{ duration: 6, repeat: Infinity }}
-              className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-r-8 border-t-8 border-violet-600 rounded-lg"
-              src="/assets/studying-together.jpg"
-              alt="Students are studying together"
-            />
+            <div className="w-full lg:w-4/5 md:w-[450px] lg:h-60 md:h-64 object-cover border-r-8 border-t-8 border-violet-600 rounded-lg animate-floatY overflow-hidden">
+              <Image
+                width={433}
+                height={232}
+                priority
+                src="/assets/studying-together.jpg"
+                alt="Students are studying together"
+              />
+            </div>
           </figure>
 
           <figure className="md:block hidden">
-            <motion.img
-              animate={{ x: [30, 80, 30] }}
-              transition={{ duration: 6, repeat: Infinity }}
-              className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-l-8 border-b-8 border-neutral-700 rounded-lg"
-              src="/assets/students-work.jpg"
-              alt="Students are learning"
-            />
+            <div className="animate-floatX">
+              <Image
+                width={500}
+                height={300}
+                priority
+                src="/assets/students-work.jpg"
+                alt="Students are studying together"
+                className="lg:w-4/5 md:w-[450px] object-cover lg:h-60 md:h-64 border-l-8 border-b-8 border-neutral-700 rounded-lg"
+              />
+            </div>
+
           </figure>
 
           <figure className="md:hidden block mt-3 mb-5">
-            <motion.img
-             animate={{ y: [0, 25, 0] }}
-             transition={{ duration: 6, repeat: Infinity }}
-              className="w-full border-r-8 border-t-8 border-violet-600 rounded-lg"
-              src="/assets/studying-together.jpg"
-              alt="Students are studying together"
-            />
+            <div className="animate-floatY">
+              <Image
+                width={500}
+                height={300}
+                src="/assets/studying-together.jpg"
+                alt="Students are studying together"
+                className="w-full border-r-8 border-t-8 border-violet-600 rounded-lg"
+              />
+            </div>
           </figure>
 
           <figure className="md:hidden block">
-            <motion.img
-            animate={{ y: [-30, 0, -30] }}
-            transition={{ duration: 6, repeat: Infinity }}
-              className="w-full border-l-8 border-b-8 border-neutral-700 rounded-lg"
-              src="/assets/students-work.jpg"
-              alt="Students are learning"
-            />
+            <div className="w-full border-l-8 border-b-8 border-neutral-700 rounded-lg animate-floatX">
+              <Image
+                width={500}
+                height={300}
+                src="/assets/students-work.jpg"
+                alt="Students are learning"
+                className="w-full border-l-8 border-b-8 border-neutral-700 rounded-lg"
+              />
+            </div>
           </figure>
         </div>
 
@@ -55,15 +65,15 @@ const Hero = () => {
             Start Learning Today!
           </h2>
           <p className="md:text-base text-sm font-medium pb-5">
-          Unlock your potential with expert-led courses in IELTS, Spoken English, and more. Our interactive lessons and practical exercises are designed to help you improve your language skills effectively. Whether you're preparing for an exam, enhancing your communication skills, or learning for personal growth, we provide the right resources to support your journey.
+            Unlock your potential with expert-led courses in IELTS, Spoken English, and more. Our interactive lessons and practical exercises are designed to help you improve your language skills effectively. Whether you're preparing for an exam, enhancing your communication skills, or learning for personal growth, we provide the right resources to support your journey.
           </p>
 
-           <Button variant="default">
-          <Link href="/all-courses" className="flex gap-2 items-center font-bold px-4">
-            <span className="text-lg">Get Started</span>
-            <FaArrowRight className="text-xl" /> 
+          <Link href="/all-courses">
+            <Button variant="default" className="flex gap-2 items-center font-bold px-4">
+              <span className="text-lg">Get Started</span>
+              <FaArrowRight className="text-xl" />
+            </Button>
           </Link>
-           </Button>
         </div>
       </div>
     </div>
