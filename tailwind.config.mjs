@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
@@ -8,6 +9,20 @@ export default {
   ],
   theme: {
   	extend: {
+		animation: {
+			floatY: "floatY 9s infinite",
+			floatX: "floatX 9s infinite",
+		  },
+		  keyframes: {
+			floatY: {
+			  "0%, 100%": { transform: "translateY(0px)" },
+			  "50%": { transform: "translateY(30)" },
+			},
+			floatX: {
+			  "0%, 100%": { transform: "translateX(30px)" },
+			  "50%": { transform: "translateX(80px)" },
+			},
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

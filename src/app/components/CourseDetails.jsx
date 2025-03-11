@@ -1,9 +1,6 @@
 "use client";
-import { BiLike, BiSolidLike } from "react-icons/bi";
-import { FaCalendarCheck } from "react-icons/fa";
-import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
+
 import StarRatings from "react-star-ratings";
-import { BsPersonCheckFill } from "react-icons/bs";
 import Heading from "./Heading";
 import { IoTimer } from "react-icons/io5";
 import Swal from "sweetalert2";
@@ -12,6 +9,7 @@ import { Modal, ModalBody, ModalTrigger } from "@/components/ui/animated-modal";
 import { EnrollModal } from "./EnrollModal";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Image from "next/image";
 
 const CourseDetails = ({ course }) => {
   const { data: session } = useSession();
@@ -62,7 +60,7 @@ const CourseDetails = ({ course }) => {
           <div className="flex justify-between items-center">
             <p className="md:text-xl flex gap-1 items-center font-semibold">
               <span className="font-bold">Price:</span>{" "}
-              <PiCurrencyDollarSimpleFill className="text-2xl" />{" "}
+              <Image alt="\" src={"https://img.icons8.com/ios-filled/50/us-dollar-circled--v1.png"} height={30} width={28} />{" "}
               <span>{course?.price}</span>
             </p>
 
@@ -95,13 +93,13 @@ const CourseDetails = ({ course }) => {
           <div className="flex flex-col gap-3">
             <p className="flex gap-2 items-center md:text-xl">
               <span className="font-bold">Level:</span>
-              <BsPersonCheckFill className="md:text-xl text-lg" />
+              <Image alt="\" src={"https://img.icons8.com/ios-glyphs/30/checked-user-male.png"} height={30} width={28} />
               <span className="font-medium">{course?.level}</span>
             </p>
 
             <p className="flex gap-2 items-center md:text-xl">
               <span className="font-bold">Likes:</span>
-              <BiSolidLike className="md:text-xl text-lg" />
+              <Image alt="\" src={"https://img.icons8.com/material-sharp/24/facebook-like--v1.png"} height={30} width={28} />
               <span className="font-medium">{course?.likes}</span>
             </p>
           </div>
@@ -113,9 +111,9 @@ const CourseDetails = ({ course }) => {
               className="hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-md p-2 cursor-pointer"
             >
               {liked ? (
-                <BiSolidLike className="text-3xl text-indigo-600" />
+                <Image alt="\" src={"https://img.icons8.com/material-sharp/24/facebook-like--v1.png"} height={30} width={28} />
               ) : (
-                <BiLike className="text-3xl" />
+                <Image alt="\" src={"https://img.icons8.com/material-outlined/50/facebook-like--v1.png"} height={30} width={28} />
               )}
             </button>
 
@@ -125,7 +123,7 @@ const CourseDetails = ({ course }) => {
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
                   <div className="px-8 py-2 bg-black rounded-[6px]  relative group text-white hover:bg-transparent flex gap-2 items-center font-bold group-hover/modal-btn:translate-x-40 text-center transition duration-500">
                     <span>Enroll Course</span>
-                    <FaCalendarCheck className="text-xl" />
+                    <Image alt="\" src={"https://img.icons8.com/sf-black-filled/64/today.png"} height={30} width={28} />
                   </div>
                 </button>
                 <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20 text-2xl">
