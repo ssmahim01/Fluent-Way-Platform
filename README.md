@@ -80,7 +80,6 @@ npm run dev
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",
     "mongodb": "^6.13.0",
     "motion": "^12.4.7",

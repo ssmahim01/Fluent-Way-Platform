@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          
         >
           <LayoutWrapper>{children}</LayoutWrapper>
         </ThemeProvider>

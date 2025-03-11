@@ -4,15 +4,15 @@ import {
   ModalFooter,
   useModal,
 } from "@/components/ui/animated-modal";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoDocumentText, IoTimer } from "react-icons/io5";
-import { MdCancel } from "react-icons/md";
 import { HiOutlineSaveAs } from "react-icons/hi";
-import { PiCurrencyDollarSimpleFill } from "react-icons/pi";
 import Swal from "sweetalert2";
+import Image from "next/image";
+import { CircleX } from "lucide-react";
 
 const EditBooking = ({ booking }) => {
   const images = ["/assets/fluent-way.webp", `${booking?.courseImage}`];
@@ -117,7 +117,7 @@ const EditBooking = ({ booking }) => {
 
           <div className="pt-3 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm">
             <div className="flex items-center justify-center">
-              <PiCurrencyDollarSimpleFill className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
+              <Image alt="\" src={"https://img.icons8.com/ios-filled/50/us-dollar-circled--v2.png"} height={35} width={28} />
               <span className="text-neutral-700 dark:text-neutral-300 text-base">
                 {booking?.coursePrice}
               </span>
@@ -196,7 +196,7 @@ const EditBooking = ({ booking }) => {
             onClick={handleCancel}
             className="p-2 bg-neutral-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-base w-40 font-bold flex gap-1 justify-center items-center"
           >
-            <MdCancel className="text-lg" />
+            <CircleX className="text-lg" />
             <span className="text-base">Cancel</span>
           </button>
           <button
